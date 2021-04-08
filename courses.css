@@ -11,6 +11,8 @@ body {
 .container {
     width: 100%;
     max-width: 100vw;
+    display: flex;
+    flex-direction: column;
 }
 
 header {
@@ -53,4 +55,45 @@ header {
     align-items: center;
     margin-right: 5px;
 }
+
+.picked-courses {
+    border: #0087e0 solid 2px;
+    width: 90%;
+    height: 400px;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    display: flex;
+    justify-content: center;
+    padding: 50px 0 0 0;
+    margin: 50px auto;
+    border-radius: 5px;
+}
+
+.picked-courses table {
+    border-collapse: collapse;
+    width: 90%;
+    font-family: Vazir;
+}
+.picked-courses table, th, td{
+    border: 1px solid black;
+    text-align: center;
+}
+
+.picked-courses th {
+    padding: 15px 10px 15px 10px;
+    width: auto;
+    color: #1a4c89;
+}
+
+.picked-courses td {
+    padding: 15px 10px 15px 10px;
+    width: auto;
+}
+
+.picked-courses i {
+    color: #ff595e;
+    width: 100%;
+}
+
+
 
