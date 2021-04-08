@@ -14,13 +14,12 @@ body {
 }
 
 header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     width: 100%;
     margin-top: 10px;
-    padding: 0 30px 5px 170px;
     border-bottom: #0087e0 solid 2px;
+    padding: 0 0 5px 0;
+    font-family: Vazir;
+    font-weight: 500;
 }
 
 .bird-logo {
@@ -30,8 +29,28 @@ header {
 
 .nav-link {
     color: #0087e0;
+    text-align: center;
 }
 
-.exit span {
+.nav-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.exit{
+    display: flex;
+    text-align: center;
     color: #ff595e;
 }
+
+.exit:hover {
+    text-decoration: none;
+}
+
+.exit i {
+    display: flex;
+    align-items: center;
+    margin-right: 5px;
+}
+
