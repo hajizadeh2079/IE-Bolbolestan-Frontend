@@ -59,14 +59,22 @@ header {
 .picked-courses {
     border: #0087e0 solid 2px;
     width: 90%;
-    height: 400px;
-    overflow-y: scroll;
-    scrollbar-width: none;
+    height: 500px;
     display: flex;
     justify-content: center;
+    flex-direction: column;
     padding: 50px 0 0 0;
     margin: 50px auto;
     border-radius: 5px;
+}
+
+.picked-courses-table {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    overflow-y: scroll;
+    scrollbar-width: none;
 }
 
 .picked-courses table {
@@ -139,5 +147,24 @@ header {
     font-weight: 900;
 }
 
+.picked-courses-bottom {
+    border-top: solid 2px #0087e0;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 40px 5px 40px;
+}
+
+.picked-courses-bottom .buttons {
+    display: flex;
+    justify-content: center;
+}
+
+.picked-courses-bottom button {
+    height: 100%;
+    color: white;
+    background: #06d6a0;
+}
 
 
