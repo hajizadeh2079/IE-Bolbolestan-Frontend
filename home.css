@@ -2,3 +2,35 @@
     height: 400px;
     width: 100%;
 }
+
+.user-photo {
+    margin-top: 30px;
+    margin-bottom: 35px;
+    height: 150px;
+    width: auto;
+    border-radius: 50%;
+    border: #0087e0 solid 2px;
+}
+
+.profile {
+    border-left: #0087e0 solid 2px;
+}
+
+.profile ul {
+    padding-right: 0;
+    list-style-type: none;
+}
+
+.profile ul li {
+    margin-bottom: 10px;
+}
+
+.profile ul li span {
+    color: #0087e0;
+}
+
+.studying-status {
+    width: 70%;
+    border-color: #0087e0;
+    color: #0087e0;
+}
