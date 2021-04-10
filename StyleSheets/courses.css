@@ -1,4 +1,4 @@
-.picked-courses {
+.picked-courses, .all-courses {
     border-color: #0087e0;
     width: 90%;
     height: 250px;
@@ -148,4 +148,11 @@
     margin-right: 15px;
     display: flex;
     align-items: center;
+}
+
+
+.all-courses {
+    height: auto;
+    margin-top: 30px;
+    margin-bottom: 10px;
 }
