@@ -59,7 +59,7 @@
     border-spacing: 0 15px;
 }
 
-.report-card tr, td {
+.report-card tr, .report-card td {
     border: #1fa5ff solid 1px;
     text-align: center;
 }

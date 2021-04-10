@@ -22,7 +22,7 @@
     width: 90%;
 }
 
-.picked-courses table, th, td {
+.picked-courses table, .picked-courses th, .picked-courses td {
     border: 1px solid black;
     text-align: center;
 }
@@ -37,12 +37,15 @@
 }
 
 .flaticon-trash-bin {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: #ff595e;
-    font-size: 18px;
+    font-size: 25px;
 }
 
 .register-status {
-    padding: 0;
+    padding: 3px 0;
     margin: 5px auto;
     width: 70%;
     font-size: 14px;
@@ -155,4 +158,115 @@
     height: auto;
     margin-top: 30px;
     margin-bottom: 10px;
+}
+
+.kind-courses {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border-bottom: 2px solid #0087e0;
+    padding-bottom: 30px;
+}
+
+.kind-courses input[type="checkbox"] {
+    display: none;
+}
+
+.kind-courses label {
+    color: rgba(0, 0, 0, 0.6);
+    border-color: rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    width: 15%;
+    font-size: 20px;
+    font-weight: 900;
+    border-radius: 15px;
+}
+
+.kind-courses input[type="checkbox"]:checked + label {
+    background-color: rgba(31, 165, 255, 0.5);
+    border-width: 0;
+}
+
+.all-courses-table {
+    height: 480px;
+    display: flex;
+    justify-content: center;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+
+.all-courses-table table {
+    width: 100%;
+    border-top-width: 0;
+}
+
+.all-courses-table table th {
+    color: #1a4c89;
+    font-size: 20px;
+    padding: 30px 0;
+    border-bottom: 2px solid #0087e0;
+}
+
+.all-courses-table table td {
+    color: rgba(157, 157, 157, 255);
+    border-left: #000000 solid 1px;
+    border-bottom: #000000 solid 1px;
+    padding: 5px 0;
+}
+
+.all-courses-table table td:last-child {
+    border: none;
+}
+
+.all-courses-icons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    margin: 0 auto;
+    width: 70%;
+    border-radius: 5px;
+}
+
+.all-courses .flaticon-add {
+    background-color: rgba(37, 167, 69, 0.8);
+    font-size: 12px;
+    padding: 8px 0;
+}
+
+.all-courses .flaticon-clock-circular-outline {
+    background-color: #9d9d9d;
+    font-size: 18px;
+    padding: 6px 0;
+}
+
+.kind-class {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    border-radius: 10px;
+    color: #FFFFFF;
+    width: 80%;
+    padding: 2px 0;
+}
+
+.asli {
+    background-color: #06d6a0;
+}
+
+.takhasosi {
+    background-color: #0087e0;
+}
+
+.paaye {
+    background-color: #ff595e;
+}
+
+.umumi {
+    background-color: #edbb41;
+}
+
+.empty-capacity {
+    color: #1a4c89;
+    font-weight: 900;
 }
