@@ -88,16 +88,3 @@ body {
     font-size: 35px;
     margin-right: 10px;
 }
-
-.label {
-    width: 25%;
-    position: relative;
-    margin: 0;
-    top: -15px;
-    right: 40px;
-    padding: 0;
-    background-color: #0087e0;
-    color: #FFFFFF;
-    border-radius: 10px;
-    font-size: 16px;
-}
