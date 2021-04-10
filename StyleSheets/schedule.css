@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin: 100px auto 100px auto;
+    margin: 100px auto 320px auto;
     width: 90%;
     border: 2px solid #0087e0;
     border-radius: 10px 10px 0 0;
@@ -46,6 +46,7 @@
     border-bottom: rgba(157, 157, 157, 255) solid 1px;
     padding: 30px 0;
     width: 15%;
+    position: relative;
 }
 
 .schedule-container table tr:last-child td {
@@ -58,4 +59,61 @@
 
 .schedule-container table tr td:first-child {
     width: 10%;
+}
+
+.course-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    border-right: 10px solid;
+    border-radius: 10px;
+    opacity: 0.7;
+    font-size: 16px;
+    top: 2%;
+    right: 2%;
+    left: 2%;
+    bottom: 2%;
+}
+
+.class-type, .class-name {
+    font-weight: 500;
+}
+
+.asli {
+    border-color: rgba(255, 89, 94, 1);
+    background-color: rgba(255, 89, 94, 0.7);
+}
+
+.takhasosi {
+    border-color: rgba(0, 135, 224, 1);
+    background-color: rgba(0, 135, 224, 0.7);
+}
+
+.paaye {
+    border-color: rgba(6, 214, 160, 1);
+    background-color: rgba(6, 214, 160, 0.7);
+}
+
+.umumi {
+    border-color: rgba(237, 187, 65, 1);
+    background-color: rgba(237, 187, 65, 0.7);
+}
+
+.internet, .database, .islamic {
+    bottom: -48%;
+}
+
+.network-lab {
+    bottom: -198%;
+}
+
+.english {
+    bottom: -98%;
+}
+
+.equations {
+    top: 50%;
+    bottom: -98%;
 }
