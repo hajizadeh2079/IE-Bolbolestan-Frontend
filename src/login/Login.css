@@ -1,0 +1,71 @@
+html { 
+    background: url("../photos/cover\ photo.jpg") no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.container {
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    height: 450px;
+    width: 30%;
+    padding-bottom: 20px;
+    border-width: 0;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 60%;
+}
+
+.form-input {
+    padding: 15px 10px;
+    background-color: rgba(157, 157, 157, 0.1);
+    border-radius: 25px;
+    width: 90%;
+    border-width: 1px;
+    border-color: rgb(157, 157, 157);
+}
+
+.login-button {
+    padding: 15px 10px;
+    font-weight: 900;
+    font-size: 22px;
+    background-color: #0087e0;
+    color: #FFFFFF;
+    border-radius: 25px;
+    width: 90%;
+    cursor: pointer;
+}
+
+.form-logo {
+    margin: 0 auto;
+    width: auto;
+    height: 35%;
+}
+
+
+.no-account {
+    font-size: 18px;
+}
+
+.no-account a {
+    text-decoration: none;
+}
+
+.login-form input:focus {
+    outline: none;
+}
