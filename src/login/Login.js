@@ -54,14 +54,13 @@ class Login extends Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  handleSubmit = (event) => {
+  handleSubmit = async (event) => {
     event.preventDefault();
-    /*
-
-      Todo
-
-    */
-    this.props.setId(this.state.email);
+    const apiUrl = `http://localhost:8080/students/${this.state.email}`;
+    const response = await fetch(apiUrl);
+    const json = await response.json();
+    if (json.id) this.props.setId(this.state.email);
+    else alert("Enter a valid id");
   };
 
   getId = () => {

@@ -8,7 +8,6 @@ class Courses extends Component {
   getId = () => {
     return JSON.parse(localStorage.getItem("id"));
   };
-  
 }
 
 export default Courses;
