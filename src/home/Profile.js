@@ -1,4 +1,5 @@
 import { React, Component } from "react";
+import RingLoader from "react-spinners/RingLoader";
 
 class Profile extends Component {
   constructor(props) {
@@ -15,9 +16,16 @@ class Profile extends Component {
       img: "",
       gpa: "",
       tpu: "",
+      loading: true,
     };
   }
   render() {
+    if (this.state.loading)
+      return (
+        <div className="col-md-4 profile spinner-loading">
+          <RingLoader size={150} />
+        </div>
+      );
     return (
       <div className="col-md-4 profile">
         <img src={this.state.img} alt="" className="user-photo" />
@@ -64,20 +72,22 @@ class Profile extends Component {
     const apiUrl = `http://localhost:8080/profiles/${this.getId()}`;
     const response = await fetch(apiUrl);
     const json = await response.json();
-    console.log(json);
-    this.setState({
-      stdId: json.stdId,
-      name: json.name,
-      secondName: json.secondName,
-      birthDate: json.birthDate,
-      field: json.field,
-      faculty: json.faculty,
-      level: json.level,
-      status: json.status,
-      img: json.img,
-      gpa: json.gpa,
-      tpu: json.tpu,
-    });
+    setTimeout(() => {
+      this.setState({
+        stdId: json.stdId,
+        name: json.name,
+        secondName: json.secondName,
+        birthDate: json.birthDate,
+        field: json.field,
+        faculty: json.faculty,
+        level: json.level,
+        status: json.status,
+        img: json.img,
+        gpa: json.gpa,
+        tpu: json.tpu,
+        loading: false,
+      });
+    }, 5000);
   }
 
   getId = () => {

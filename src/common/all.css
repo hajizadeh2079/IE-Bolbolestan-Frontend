@@ -2,7 +2,7 @@
   direction: rtl;
   text-align: center;
   box-sizing: border-box;
-  font-family: Vazir;
+  font-family: Vazir FD;
 }
 
 body {
@@ -99,4 +99,10 @@ a:hover {
 
 .special-buttons:focus {
   outline: none;
+}
+
+.spinner-loading {
+  display: flex;
+  justify-content: center;
+  padding-top: 30px;
 }

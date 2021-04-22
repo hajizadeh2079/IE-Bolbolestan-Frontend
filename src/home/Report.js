@@ -1,4 +1,5 @@
 import { React, Component } from "react";
+import RingLoader from "react-spinners/RingLoader";
 import Card from "./Card";
 
 class Report extends Component {
@@ -6,9 +7,18 @@ class Report extends Component {
     super(props);
     this.state = {
       cards: [],
+      loading: true,
     };
   }
   render() {
+    if (this.state.loading)
+      return (
+        <div className="col-md-8">
+          <div className="all-report-cards spinner-loading">
+            <RingLoader size={150} />
+          </div>
+        </div>
+      );
     return (
       <div className="col-md-8">
         <div className="all-report-cards">
@@ -24,9 +34,12 @@ class Report extends Component {
     const apiUrl = `http://localhost:8080/reports/${this.getId()}`;
     const response = await fetch(apiUrl);
     const json = await response.json();
-    this.setState({
-      cards: json,
-    });
+    setTimeout(() => {
+      this.setState({
+        cards: json,
+        loading: false,
+      });
+    }, 2000);
   }
 
   getId = () => {

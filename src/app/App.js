@@ -1,10 +1,10 @@
 import { React, Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import "../common/reset.css";
+import "../common/Reset.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "../common/Fonts/vazir-fonts/fonts.css";
+import "../common/Fonts/Farsi-Digits/font-face-FD.css";
 import "../common/mycollection/font/flaticon.css";
-import "../common/all.css";
+import "../common/All.css";
 import Login from "../login/Login";
 import ProtectedRoute from "./ProtectedRoute.js";
 import Home from "../home/Home";

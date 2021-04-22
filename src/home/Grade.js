@@ -7,26 +7,28 @@ class Grade extends Component {
   render() {
     const grade = this.props.grade;
     return (
-      <tr>
-        <td>{this.props.index}</td>
-        <td>{grade.code}-۰۱</td>
-        <td>{grade.name}</td>
-        <td>{grade.units} واحد</td>
-        <td>
-          <span
-            className={
-              "borders unit-status-" + this.renderStatusCSS(grade.status)
-            }
-          >
-            {this.renderStatusText(grade.status)}
-          </span>
-        </td>
-        <td>
-          <span className={"grade-" + this.renderStatusCSS(grade.status)}>
-            {grade.grade}
-          </span>
-        </td>
-      </tr>
+      <tbody>
+        <tr>
+          <td>{this.props.index}</td>
+          <td>{grade.code}-01</td>
+          <td>{grade.name}</td>
+          <td>{grade.units} واحد</td>
+          <td>
+            <span
+              className={
+                "borders unit-status-" + this.renderStatusCSS(grade.status)
+              }
+            >
+              {this.renderStatusText(grade.status)}
+            </span>
+          </td>
+          <td>
+            <span className={"grade-" + this.renderStatusCSS(grade.status)}>
+              {grade.grade}
+            </span>
+          </td>
+        </tr>
+      </tbody>
     );
   }
 
