@@ -1,8 +1,11 @@
 import { React, Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import "./App.css";
-import "../common/all.css";
 import "../common/reset.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "../common/Fonts/vazir-fonts/fonts.css";
+import "../common/mycollection/font/flaticon.css";
+import "../common/all.css";
+import "./App.css";
 import Login from "../login/Login";
 import ProtectedRoute from "./ProtectedRoute.js";
 import Home from "../home/Home";

@@ -1,6 +1,6 @@
 import { React, Component } from "react";
 import "./Login.css";
-import logo from "../photos/logo.png";
+import logo from "../common/photos/logo.png";
 import { Redirect } from "react-router-dom";
 
 class Login extends Component {
