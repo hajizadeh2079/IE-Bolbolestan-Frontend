@@ -1,199 +1,37 @@
 import { React, Component } from "react";
+import Card from "./Card";
 
 class Report extends Component {
-  state = {};
+  constructor(props) {
+    super(props);
+    this.state = {
+      cards: [],
+    };
+  }
   render() {
     return (
       <div className="col-md-8">
         <div className="all-report-cards">
-          <div className="report-card">
-            <div className="label borders">
-              <span>کارنامه - ترم ۴</span>
-            </div>
-            <table>
-              <tr>
-                <td>۱</td>
-                <td>۸۱۰۱۸۶۴-۰۱</td>
-                <td>نظریه زبان‌ها و ماشین‌ها</td>
-                <td>۳ واحد</td>
-                <td>
-                  <span className="borders unit-status-pass">قبول</span>
-                </td>
-                <td>
-                  <span className="grade-pass">۱۹.۲۵</span>
-                </td>
-              </tr>
-              <tr>
-                <td>۲</td>
-                <td>۸۱۰۱۸۶۴-۰۱</td>
-                <td>نظریه زبان‌ها و ماشین‌ها</td>
-                <td>۳ واحد</td>
-                <td>
-                  <span className="borders unit-status-failed">مردود</span>
-                </td>
-                <td>
-                  <span className="grade-failed">۹.۵</span>
-                </td>
-              </tr>
-              <tr>
-                <td>۳</td>
-                <td>۸۱۰۱۸۶۴-۰۱</td>
-                <td>نظریه زبان‌ها و ماشین‌ها</td>
-                <td>۳ واحد</td>
-                <td>
-                  <span className="borders unit-status-unknown">نامشخص</span>
-                </td>
-                <td>
-                  <span className="grade-unknown">--</span>
-                </td>
-              </tr>
-            </table>
-            <div className="gpa">
-              <span className="borders">معدل: ۱۴.۲۵</span>
-            </div>
-          </div>
-          <div className="report-card">
-            <div className="label borders">
-              <span>کارنامه - ترم ۳</span>
-            </div>
-            <table>
-              <tr>
-                <td>۱</td>
-                <td>۸۱۰۱۸۶۴-۰۱</td>
-                <td>نظریه زبان‌ها و ماشین‌ها</td>
-                <td>۳ واحد</td>
-                <td>
-                  <span className="borders unit-status-pass">قبول</span>
-                </td>
-                <td>
-                  <span className="grade-pass">۱۹.۲۵</span>
-                </td>
-              </tr>
-              <tr>
-                <td>۲</td>
-                <td>۸۱۰۱۸۶۴-۰۱</td>
-                <td>نظریه زبان‌ها و ماشین‌ها</td>
-                <td>۳ واحد</td>
-                <td>
-                  <span className="borders unit-status-failed">مردود</span>
-                </td>
-                <td>
-                  <span className="grade-failed">۹.۵</span>
-                </td>
-              </tr>
-              <tr>
-                <td>۳</td>
-                <td>۸۱۰۱۸۶۴-۰۱</td>
-                <td>نظریه زبان‌ها و ماشین‌ها</td>
-                <td>۳ واحد</td>
-                <td>
-                  <span className="borders unit-status-unknown">نامشخص</span>
-                </td>
-                <td>
-                  <span className="grade-unknown">--</span>
-                </td>
-              </tr>
-            </table>
-            <div className="gpa">
-              <span className="borders">معدل: ۱۴.۲۵</span>
-            </div>
-          </div>
-          <div className="report-card">
-            <div className="label borders">
-              <span>کارنامه - ترم ۲</span>
-            </div>
-            <table>
-              <tr>
-                <td>۱</td>
-                <td>۸۱۰۱۸۶۴-۰۱</td>
-                <td>نظریه زبان‌ها و ماشین‌ها</td>
-                <td>۳ واحد</td>
-                <td>
-                  <span className="borders unit-status-pass">قبول</span>
-                </td>
-                <td>
-                  <span className="grade-pass">۱۹.۲۵</span>
-                </td>
-              </tr>
-              <tr>
-                <td>۲</td>
-                <td>۸۱۰۱۸۶۴-۰۱</td>
-                <td>نظریه زبان‌ها و ماشین‌ها</td>
-                <td>۳ واحد</td>
-                <td>
-                  <span className="borders unit-status-failed">مردود</span>
-                </td>
-                <td>
-                  <span className="grade-failed">۹.۵</span>
-                </td>
-              </tr>
-              <tr>
-                <td>۳</td>
-                <td>۸۱۰۱۸۶۴-۰۱</td>
-                <td>نظریه زبان‌ها و ماشین‌ها</td>
-                <td>۳ واحد</td>
-                <td>
-                  <span className="borders unit-status-unknown">نامشخص</span>
-                </td>
-                <td>
-                  <span className="grade-unknown">--</span>
-                </td>
-              </tr>
-            </table>
-            <div className="gpa">
-              <span className="borders">معدل: ۱۴.۲۵</span>
-            </div>
-          </div>
-          <div className="report-card">
-            <div className="label borders">
-              <span>کارنامه - ترم ۱</span>
-            </div>
-            <table>
-              <tr>
-                <td>۱</td>
-                <td>۸۱۰۱۸۶۴-۰۱</td>
-                <td>نظریه زبان‌ها و ماشین‌ها</td>
-                <td>۳ واحد</td>
-                <td>
-                  <span className="borders unit-status-pass">قبول</span>
-                </td>
-                <td>
-                  <span className="grade-pass">۱۹.۲۵</span>
-                </td>
-              </tr>
-              <tr>
-                <td>۲</td>
-                <td>۸۱۰۱۸۶۴-۰۱</td>
-                <td>نظریه زبان‌ها و ماشین‌ها</td>
-                <td>۳ واحد</td>
-                <td>
-                  <span className="borders unit-status-failed">مردود</span>
-                </td>
-                <td>
-                  <span className="grade-failed">۹.۵</span>
-                </td>
-              </tr>
-              <tr>
-                <td>۳</td>
-                <td>۸۱۰۱۸۶۴-۰۱</td>
-                <td>نظریه زبان‌ها و ماشین‌ها</td>
-                <td>۳ واحد</td>
-                <td>
-                  <span className="borders unit-status-unknown">نامشخص</span>
-                </td>
-                <td>
-                  <span className="grade-unknown">--</span>
-                </td>
-              </tr>
-            </table>
-            <div className="gpa">
-              <span className="borders">معدل: ۱۴.۲۵</span>
-            </div>
-          </div>
+          {this.state.cards.map((card, index) => (
+            <Card key={index} card={card} />
+          ))}
         </div>
       </div>
     );
   }
+
+  async componentDidMount() {
+    const apiUrl = `http://localhost:8080/reports/${this.getId()}`;
+    const response = await fetch(apiUrl);
+    const json = await response.json();
+    this.setState({
+      cards: json,
+    });
+  }
+
+  getId = () => {
+    return JSON.parse(localStorage.getItem("id"));
+  };
 }
 
 export default Report;
