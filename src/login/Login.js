@@ -16,7 +16,7 @@ class Login extends Component {
     const id = this.getId();
     if (id) return <Redirect to={{ pathname: "/" }} />;
     return (
-      <div className="container container-cover">
+      <div className="my-container login-container container-cover">
         <div className="card borders">
           <img src={logo} alt="" className="form-logo" />
           <form className="login-form" onSubmit={this.handleSubmit}>

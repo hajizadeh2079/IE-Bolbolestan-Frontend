@@ -5,7 +5,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "../common/Fonts/vazir-fonts/fonts.css";
 import "../common/mycollection/font/flaticon.css";
 import "../common/all.css";
-import "./App.css";
 import Login from "../login/Login";
 import ProtectedRoute from "./ProtectedRoute.js";
 import Home from "../home/Home";
@@ -24,24 +23,22 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <Router>
-          <Switch>
-            <Route path="/login" exact>
-              <Login setId={this.setId} />
-            </Route>
-            <Route path="/signup" exact>
-              <Signup />
-            </Route>
-            <ProtectedRoute path="/" exact component={Home} />
-            <ProtectedRoute path="/courses" exact component={Courses} />
-            <ProtectedRoute path="/schedule" exact component={Schedule} />
-            <Route path="/">
-              <Error404 />
-            </Route>
-          </Switch>
-        </Router>
-      </div>
+      <Router>
+        <Switch>
+          <Route path="/login" exact>
+            <Login setId={this.setId} />
+          </Route>
+          <Route path="/signup" exact>
+            <Signup />
+          </Route>
+          <ProtectedRoute path="/" exact component={Home} />
+          <ProtectedRoute path="/courses" exact component={Courses} />
+          <ProtectedRoute path="/schedule" exact component={Schedule} />
+          <Route path="/">
+            <Error404 />
+          </Route>
+        </Switch>
+      </Router>
     );
   }
 

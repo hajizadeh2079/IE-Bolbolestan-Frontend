@@ -10,7 +10,7 @@ body {
   padding: 0;
 }
 
-.container {
+.my-container {
   width: 100%;
   max-width: 100vw;
   display: flex;

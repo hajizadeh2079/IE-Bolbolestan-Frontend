@@ -1,12 +1,13 @@
 .container-cover {
-  background: url("../common/photos/cover\ photo.jpg") no-repeat center center fixed;
+  background: url("../common/photos/cover\ photo.jpg") no-repeat center center
+    fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
 }
 
-.container {
+.login-container {
   justify-content: center;
   align-items: center;
   height: 100vh;
