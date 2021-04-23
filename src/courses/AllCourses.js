@@ -7,7 +7,6 @@ class AllCourses extends Component {
     super(props);
     this.state = {
       courses: [],
-      search: "",
       loading: false,
     };
   }
@@ -18,23 +17,58 @@ class AllCourses extends Component {
           <span>دروس ارائه شده</span>
         </div>
         <div className="kind-courses">
-          <input type="checkbox" id="all" value="all" />
+          <input
+            type="radio"
+            id="all"
+            value="all"
+            name="typeFilter"
+            checked={this.handleChecked("all")}
+            onClick={this.handleClick}
+          />
           <label className="borders" for="all">
             همه
           </label>
-          <input type="checkbox" id="Takhasosi" value="Takhasosi" />
+          <input
+            type="radio"
+            id="Takhasosi"
+            value="Takhasosi"
+            name="typeFilter"
+            checked={this.handleChecked("Takhasosi")}
+            onClick={this.handleClick}
+          />
           <label className="borders" for="Takhasosi">
             اختصاصی
           </label>
-          <input type="checkbox" id="Asli" value="Asli" />
+          <input
+            type="radio"
+            id="Asli"
+            value="Asli"
+            name="typeFilter"
+            checked={this.handleChecked("Asli")}
+            onClick={this.handleClick}
+          />
           <label className="borders" for="Asli">
             اصلی
           </label>
-          <input type="checkbox" id="Paaye" value="Paaye" />
+          <input
+            type="radio"
+            id="Paaye"
+            value="Paaye"
+            name="typeFilter"
+            checked={this.handleChecked("Paaye")}
+            onClick={this.handleClick}
+          />
           <label className="borders" for="Paaye">
             پایه
           </label>
-          <input type="checkbox" id="Umumi" value="Umumi" />
+          <input
+            type="radio"
+            id="Umumi"
+            value="Umumi"
+            name="typeFilter"
+            checked={this.handleChecked("Umumi")}
+            onClick={this.handleClick}
+          />
           <label className="borders" for="Umumi">
             عمومی
           </label>
@@ -63,7 +97,11 @@ class AllCourses extends Component {
   }
 
   async componentDidMount() {
-    const apiUrl = `http://localhost:8080/courses?search=${this.state.search}&type=`;
+    let searchFilter = JSON.parse(localStorage.getItem("searchFilter"));
+    let typeFilter = JSON.parse(localStorage.getItem("typeFilter"));
+    if (searchFilter == null) searchFilter = "";
+    if (typeFilter == null) typeFilter = "";
+    const apiUrl = `http://localhost:8080/courses?search=${searchFilter}&type=`;
     const response = await fetch(apiUrl);
     const json = await response.json();
     console.log(json);
@@ -75,6 +113,15 @@ class AllCourses extends Component {
     }, 2000);
   }
 
+  handleChecked = (type) => {
+    let typeFilter = JSON.parse(localStorage.getItem("typeFilter"));
+    if (type == typeFilter) return "checked";
+    if (type == "all" && typeFilter == null) return "checked";
+    return "";
+  };
+  handleClick = (event) => {
+    localStorage.setItem("typeFilter", JSON.stringify(event.target.value));
+  };
   getId = () => {
     return JSON.parse(localStorage.getItem("id"));
   };

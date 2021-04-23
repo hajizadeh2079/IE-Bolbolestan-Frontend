@@ -11,6 +11,7 @@ class PickedCourses extends Component {
       waitingCourses: [],
       sumOfUnits: 0,
       loading: false,
+      trigger: false,
     };
   }
   render() {
@@ -32,13 +33,28 @@ class PickedCourses extends Component {
               </tr>
             </tbody>
             {this.state.finalizedCourses.map((course) => (
-              <PickedCourse key={course.code} course={course} status="registered" />
+              <PickedCourse
+                key={course.code}
+                course={course}
+                status="registered"
+                trigger={this.trigger}
+              />
             ))}
             {this.state.nonFinalizedCourses.map((course) => (
-              <PickedCourse key={course.code} course={course} status="not-registered"/>
+              <PickedCourse
+                key={course.code}
+                course={course}
+                status="not-registered"
+                trigger={this.trigger}
+              />
             ))}
             {this.state.waitingCourses.map((course) => (
-              <PickedCourse key={course.code} course={course} status="waiting"/>
+              <PickedCourse
+                key={course.code}
+                course={course}
+                status="waiting"
+                trigger={this.trigger}
+              />
             ))}
           </table>
         </div>
@@ -95,6 +111,10 @@ class PickedCourses extends Component {
     const response = await fetch(apiUrl, requestOptions);
     const json = await response.json();
     console.log(json);
+  };
+
+  trigger = () => {
+    this.setState({ trigger: !this.state.trigger });
   };
 
   getId = () => {

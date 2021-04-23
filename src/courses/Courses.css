@@ -170,7 +170,7 @@
   padding-bottom: 30px;
 }
 
-.kind-courses input[type="checkbox"] {
+.kind-courses input[type="radio"] {
   display: none;
 }
 
@@ -184,7 +184,7 @@
   border-radius: 15px;
 }
 
-.kind-courses input[type="checkbox"]:checked + label {
+.kind-courses input[type="radio"]:checked + label {
   background-color: rgba(31, 165, 255, 0.5);
   border-width: 0;
 }
