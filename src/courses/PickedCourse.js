@@ -10,7 +10,7 @@ class Course extends Component {
       <tbody>
         <tr>
           <td>
-            <button class="special-buttons">
+            <button class="special-buttons" onClick={this.removeCourse}>
               <i class="flaticon-trash-bin"></i>
             </button>
           </td>
