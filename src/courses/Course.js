@@ -62,12 +62,11 @@ class Course extends Component {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        id: this.getId(),
         code: course.code,
         classCode: course.classCode,
       }),
     };
-    const apiUrl = "http://localhost:8080/courses";
+    const apiUrl = `http://localhost:8080/plans/${this.getId()}`;
     const response = await fetch(apiUrl, requestOptions);
     const json = await response.json();
     console.log(json);

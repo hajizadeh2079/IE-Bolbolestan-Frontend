@@ -13,33 +13,33 @@ class AllCourses extends Component {
   }
   render() {
     return (
-      <div class="all-courses borders">
-        <div class="label borders">
+      <div className="all-courses borders">
+        <div className="label borders">
           <span>دروس ارائه شده</span>
         </div>
-        <div class="kind-courses">
+        <div className="kind-courses">
           <input type="checkbox" id="all" value="all" />
-          <label class="borders" for="all">
+          <label className="borders" for="all">
             همه
           </label>
           <input type="checkbox" id="Takhasosi" value="Takhasosi" />
-          <label class="borders" for="Takhasosi">
+          <label className="borders" for="Takhasosi">
             اختصاصی
           </label>
           <input type="checkbox" id="Asli" value="Asli" />
-          <label class="borders" for="Asli">
+          <label className="borders" for="Asli">
             اصلی
           </label>
           <input type="checkbox" id="Paaye" value="Paaye" />
-          <label class="borders" for="Paaye">
+          <label className="borders" for="Paaye">
             پایه
           </label>
           <input type="checkbox" id="Umumi" value="Umumi" />
-          <label class="borders" for="Umumi">
+          <label className="borders" for="Umumi">
             عمومی
           </label>
         </div>
-        <div class="all-courses-table">
+        <div className="all-courses-table">
           <table>
             <tbody>
               <tr>

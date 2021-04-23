@@ -15,11 +15,11 @@ class PickedCourses extends Component {
   }
   render() {
     return (
-      <div class="picked-courses borders">
-        <div class="label borders">
+      <div className="picked-courses borders">
+        <div className="label borders">
           <span>دروس انتخاب شده</span>
         </div>
-        <div class="picked-courses-table">
+        <div className="picked-courses-table">
           <table>
             <tbody>
               <tr>
@@ -42,15 +42,15 @@ class PickedCourses extends Component {
             ))}
           </table>
         </div>
-        <div class="picked-courses-status">
-          <div class="num-of-units">
+        <div className="picked-courses-status">
+          <div className="num-of-units">
             <span>تعداد واحد ثبت شده: {this.state.sumOfUnits}</span>
           </div>
-          <div class="finalized-reset">
-            <button class="special-buttons">
-              <i class="flaticon-refresh-arrow refresh"></i>
+          <div className="finalized-reset">
+            <button className="special-buttons" onClick={this.resetPlan}>
+              <i className="flaticon-refresh-arrow refresh"></i>
             </button>
-            <button>ثبت نهایی</button>
+            <button onClick={this.submitPlan}>ثبت نهایی</button>
           </div>
         </div>
       </div>
@@ -58,7 +58,7 @@ class PickedCourses extends Component {
   }
 
   async componentDidMount() {
-    const apiUrl = `http://localhost:8080/courses/${this.getId()}`;
+    const apiUrl = `http://localhost:8080/plans/${this.getId()}`;
     const response = await fetch(apiUrl);
     const json = await response.json();
     console.log(json);
@@ -71,6 +71,31 @@ class PickedCourses extends Component {
       });
     }, 2000);
   }
+
+  resetPlan = async () => {
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+    };
+    const apiUrl = `http://localhost:8080/plans/reset/${this.getId()}`;
+    const response = await fetch(apiUrl, requestOptions);
+    const json = await response.json();
+    console.log(json);
+  };
+
+  submitPlan = async () => {
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        id: this.getId(),
+      }),
+    };
+    const apiUrl = `http://localhost:8080/plans/submit/${this.getId()}`;
+    const response = await fetch(apiUrl, requestOptions);
+    const json = await response.json();
+    console.log(json);
+  };
 
   getId = () => {
     return JSON.parse(localStorage.getItem("id"));

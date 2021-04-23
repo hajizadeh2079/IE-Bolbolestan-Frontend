@@ -10,8 +10,8 @@ class Course extends Component {
       <tbody>
         <tr>
           <td>
-            <button class="special-buttons" onClick={this.removeCourse}>
-              <i class="flaticon-trash-bin"></i>
+            <button className="special-buttons" onClick={this.removeCourse}>
+              <i className="flaticon-trash-bin"></i>
             </button>
           </td>
           <td>{this.renderStatus(this.props.status)}</td>
@@ -27,14 +27,14 @@ class Course extends Component {
   }
   renderStatus = (status) => {
     if (status === "registered")
-      return <span class="register-status registered borders">ثبت شده</span>;
+      return <span className="register-status registered borders">ثبت شده</span>;
     else if (status === "not-registered")
       return (
-        <span class="register-status not-registered borders">
+        <span className="register-status not-registered borders">
           ثبت نهایی نشده
         </span>
       );
-    else return <span class="register-status waiting borders">در انتظار</span>;
+    else return <span className="register-status waiting borders">در انتظار</span>;
   };
 
   removeCourse = async () => {
@@ -43,12 +43,11 @@ class Course extends Component {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        id: this.getId(),
         code: course.code,
         classCode: course.classCode,
       }),
     };
-    const apiUrl = "http://localhost:8080/courses";
+    const apiUrl = `http://localhost:8080/plans/${this.getId()}`;
     const response = await fetch(apiUrl, requestOptions);
     const json = await response.json();
     console.log(json);

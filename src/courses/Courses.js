@@ -10,7 +10,7 @@ class Courses extends Component {
     return (
       <div>
         <Header />
-        <div class="courses-container">
+        <div className="courses-container">
           <PickedCourses />
           <AllCourses />
         </div>
