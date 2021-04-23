@@ -1,6 +1,7 @@
 import { React, Component } from "react";
 import Header from "../common/Header";
 import AllCourses from "./AllCourses";
+import PickedCourses from "./PickedCourses";
 import Footer from "../common/Footer";
 import "./Courses.css";
 
@@ -10,6 +11,7 @@ class Courses extends Component {
       <div>
         <Header />
         <div class="courses-container">
+          <PickedCourses />
           <AllCourses />
         </div>
         <Footer />

@@ -10,13 +10,23 @@ class Course extends Component {
       <tbody>
         <tr>
           <td>
-            <button className="special-buttons">
-              <i className={"all-courses-icons flaticon-" + this.renderIcon(course.signedUp, course.capacity)}></i>
+            <button className="special-buttons" onClick={this.addCourse}>
+              <i
+                className={
+                  "all-courses-icons flaticon-" +
+                  this.renderIcon(course.signedUp, course.capacity)
+                }
+              ></i>
             </button>
           </td>
           <td>{course.code + "-" + course.classCode}</td>
           <td>
-            <span className={this.renderCapacityCSS(course.signedUp, course.capacity)}>
+            <span
+              className={this.renderCapacityCSS(
+                course.signedUp,
+                course.capacity
+              )}
+            >
               {course.signedUp + "/" + course.capacity}
             </span>
           </td>
@@ -44,7 +54,26 @@ class Course extends Component {
   };
   renderIcon = (signedUp, capacity) => {
     if (capacity > signedUp) return "add";
-    else return "clock-circular-outline"
+    else return "clock-circular-outline";
+  };
+  addCourse = async () => {
+    const course = this.props.course;
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        id: this.getId(),
+        code: course.code,
+        classCode: course.classCode,
+      }),
+    };
+    const apiUrl = "http://localhost:8080/courses";
+    const response = await fetch(apiUrl, requestOptions);
+    const json = await response.json();
+    console.log(json);
+  };
+  getId = () => {
+    return JSON.parse(localStorage.getItem("id"));
   };
 }
 
