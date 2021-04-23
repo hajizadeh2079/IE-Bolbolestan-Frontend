@@ -69,7 +69,6 @@ class Course extends Component {
     const apiUrl = `http://localhost:8080/plans/${this.getId()}`;
     const response = await fetch(apiUrl, requestOptions);
     const json = await response.json();
-    console.log(json);
   };
   getId = () => {
     return JSON.parse(localStorage.getItem("id"));

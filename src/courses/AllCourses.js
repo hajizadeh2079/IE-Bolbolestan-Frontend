@@ -100,17 +100,30 @@ class AllCourses extends Component {
     let searchFilter = JSON.parse(localStorage.getItem("searchFilter"));
     let typeFilter = JSON.parse(localStorage.getItem("typeFilter"));
     if (searchFilter == null) searchFilter = "";
-    if (typeFilter == null) typeFilter = "";
-    const apiUrl = `http://localhost:8080/courses?search=${searchFilter}&type=`;
+    if (typeFilter == null) typeFilter = "all";
+    const apiUrl = `http://localhost:8080/courses?search=${searchFilter}&type=${typeFilter}`;
     const response = await fetch(apiUrl);
     const json = await response.json();
-    console.log(json);
     setTimeout(() => {
       this.setState({
         courses: json,
         loading: false,
       });
     }, 2000);
+  }
+
+  async componentWillUpdate() {
+    let searchFilter = JSON.parse(localStorage.getItem("searchFilter"));
+    let typeFilter = JSON.parse(localStorage.getItem("typeFilter"));
+    if (searchFilter == null) searchFilter = "";
+    if (typeFilter == null) typeFilter = "all";
+    const apiUrl = `http://localhost:8080/courses?search=${searchFilter}&type=${typeFilter}`;
+    const response = await fetch(apiUrl);
+    const json = await response.json();
+    this.setState({
+      courses: json,
+      loading: false,
+    });
   }
 
   handleChecked = (type) => {

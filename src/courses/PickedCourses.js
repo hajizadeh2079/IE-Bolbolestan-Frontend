@@ -11,7 +11,6 @@ class PickedCourses extends Component {
       waitingCourses: [],
       sumOfUnits: 0,
       loading: false,
-      trigger: false,
     };
   }
   render() {
@@ -77,7 +76,6 @@ class PickedCourses extends Component {
     const apiUrl = `http://localhost:8080/plans/${this.getId()}`;
     const response = await fetch(apiUrl);
     const json = await response.json();
-    console.log(json);
     setTimeout(() => {
       this.setState({
         finalizedCourses: json.finalizedCourses,
@@ -88,6 +86,18 @@ class PickedCourses extends Component {
     }, 2000);
   }
 
+  async componentWillUpdate() {
+    const apiUrl = `http://localhost:8080/plans/${this.getId()}`;
+    const response = await fetch(apiUrl);
+    const json = await response.json();
+    this.setState({
+      finalizedCourses: json.finalizedCourses,
+      nonFinalizedCourses: json.nonFinalizedCourses,
+      waitingCourses: json.waitingCourses,
+      sumOfUnits: json.sumOfUnits,
+    });
+  }
+
   resetPlan = async () => {
     const requestOptions = {
       method: "POST",
@@ -96,7 +106,6 @@ class PickedCourses extends Component {
     const apiUrl = `http://localhost:8080/plans/reset/${this.getId()}`;
     const response = await fetch(apiUrl, requestOptions);
     const json = await response.json();
-    console.log(json);
   };
 
   submitPlan = async () => {
@@ -110,11 +119,6 @@ class PickedCourses extends Component {
     const apiUrl = `http://localhost:8080/plans/submit/${this.getId()}`;
     const response = await fetch(apiUrl, requestOptions);
     const json = await response.json();
-    console.log(json);
-  };
-
-  trigger = () => {
-    this.setState({ trigger: !this.state.trigger });
   };
 
   getId = () => {

@@ -10,7 +10,7 @@ class SearchBox extends Component {
   render() {
     return (
       <div className="search borders">
-        <input className="borders" placeholder="نام درس" onChange={this.handleInputChange} value={this.getSearchFilter()}/>
+        <input className="borders" placeholder="نام درس" onChange={this.handleInputChange} defaultValue={this.getSearchFilter()}/>
         <button onClick={this.handleClick}>
           جستجو
           <i className="flaticon-loupe search-icon"></i>

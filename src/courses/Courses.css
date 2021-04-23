@@ -2,7 +2,7 @@
 .all-courses {
   border-color: #0087e0;
   width: 90%;
-  height: 250px;
+  max-height: 250px;
   flex-direction: column;
   margin: 100px auto 0 auto;
   font-weight: 500;

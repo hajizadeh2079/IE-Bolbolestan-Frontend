@@ -27,17 +27,14 @@ class Course extends Component {
   }
   renderStatus = (status) => {
     if (status === "registered")
-      return (
-        <span className="register-status registered borders">ثبت شده</span>
-      );
+      return <span className="register-status registered borders">ثبت شده</span>;
     else if (status === "not-registered")
       return (
         <span className="register-status not-registered borders">
           ثبت نهایی نشده
         </span>
       );
-    else
-      return <span className="register-status waiting borders">در انتظار</span>;
+    else return <span className="register-status waiting borders">در انتظار</span>;
   };
 
   removeCourse = async () => {
@@ -53,7 +50,6 @@ class Course extends Component {
     const apiUrl = `http://localhost:8080/plans/${this.getId()}`;
     const response = await fetch(apiUrl, requestOptions);
     const json = await response.json();
-    this.props.trigger();
   };
   getId = () => {
     return JSON.parse(localStorage.getItem("id"));
