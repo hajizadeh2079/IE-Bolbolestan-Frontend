@@ -8,7 +8,7 @@ class Card extends Component {
   render() {
     return (
       <div className="report-card">
-        <div className="label borders">
+        <div className="label-home borders">
           <span>کارنامه - ترم {this.props.card.term}</span>
         </div>
         <table>

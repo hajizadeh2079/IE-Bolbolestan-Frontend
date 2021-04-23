@@ -16,7 +16,7 @@ class PickedCourses extends Component {
   render() {
     return (
       <div className="picked-courses borders">
-        <div className="label borders">
+        <div className="label-courses borders">
           <span>دروس انتخاب شده</span>
         </div>
         <div className="picked-courses-table">

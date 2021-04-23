@@ -2,12 +2,15 @@
 .all-courses {
   border-color: #0087e0;
   width: 90%;
-  max-height: 250px;
   flex-direction: column;
   margin: 100px auto 0 auto;
   font-weight: 500;
   font-size: 14px;
   padding: 0;
+}
+
+.picked-courses {
+  max-height: 250px;
 }
 
 .picked-courses-table {
@@ -74,7 +77,7 @@
   font-weight: 900;
 }
 
-.label {
+.label-courses {
   width: 20%;
   position: relative;
   margin: 0;
@@ -190,7 +193,7 @@
 }
 
 .all-courses-table {
-  height: 720px;
+  max-height: 720px;
   display: flex;
   justify-content: center;
   overflow-y: scroll;

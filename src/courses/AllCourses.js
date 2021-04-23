@@ -13,7 +13,7 @@ class AllCourses extends Component {
   render() {
     return (
       <div className="all-courses borders">
-        <div className="label borders">
+        <div className="label-courses borders">
           <span>دروس ارائه شده</span>
         </div>
         <div className="kind-courses">
