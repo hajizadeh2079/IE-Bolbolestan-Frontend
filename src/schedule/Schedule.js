@@ -1,9 +1,81 @@
 import { React, Component } from "react";
+import Header from "../common/Header";
+import ScheduleRow from "./ScheduleRow";
+import Footer from "../common/Footer";
+import "./Schedule.css";
 
 class Schedule extends Component {
-  render() {
-    return <h1>Schedule</h1>;
+  constructor(props) {
+    super(props);
+    this.state = {
+      courses: [],
+      term: 0,
+      loading: true,
+    };
   }
+  render() {
+    const hours = [8, 9, 10, 11, 12, 13, 14, 15, 16, 17];
+    return (
+      <div>
+        <Header />
+        <div class="schedule-container">
+          <div class="schedule-header">
+            <div>
+              <i class="flaticon-calendar"></i>
+              <span>برنامه هفتگی</span>
+            </div>
+            <span>ترم {this.state.term}</span>
+          </div>
+          <table>
+            <tbody>
+              <tr>
+                <td></td>
+                <td>شنبه</td>
+                <td>یک‌شنبه</td>
+                <td>دوشنبه</td>
+                <td>سه‌شنبه</td>
+                <td>چهارشنبه</td>
+                <td>پنج‌شنبه</td>
+              </tr>
+            </tbody>
+            {hours.map((hour, index) => (
+              <ScheduleRow
+                key={index}
+                start={hour}
+                courses={this.renderCourses(hour)}
+              />
+            ))}
+          </table>
+        </div>
+        <Footer />
+      </div>
+    );
+  }
+
+  async componentDidMount() {
+    const apiUrl = `http://localhost:8080/plans/finalized/${this.getId()}`;
+    const response = await fetch(apiUrl);
+    const json = await response.json();
+    setTimeout(() => {
+      this.setState({
+        courses: json.lastFinalizedCourses,
+        term: json.term,
+        loading: false,
+      });
+    }, 2000);
+  }
+
+  renderCourses = (start) => {
+    let courses = [];
+    for (let i = 0; i < this.state.courses.length; i++) {
+      let [hours, minutes, seconds] = this.state.courses[
+        i
+      ].classTimeStart.split(":");
+      hours = parseInt(hours, 10);
+      if (hours == start) courses.push(this.state.courses[i]);
+    }
+    return courses;
+  };
 
   getId = () => {
     return JSON.parse(localStorage.getItem("id"));
