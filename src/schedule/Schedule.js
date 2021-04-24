@@ -2,6 +2,7 @@ import { React, Component } from "react";
 import Header from "../common/Header";
 import ScheduleRow from "./ScheduleRow";
 import Footer from "../common/Footer";
+import RingLoader from "react-spinners/RingLoader";
 import "./Schedule.css";
 
 class Schedule extends Component {
@@ -14,7 +15,25 @@ class Schedule extends Component {
     };
   }
   render() {
-    const hours = [8, 9, 10, 11, 12, 13, 14, 15, 16, 17];
+    const hours = [7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17];
+    if (this.state.loading)
+      return (
+        <div>
+          <Header />
+          <div class="schedule-container">
+            <div class="schedule-header">
+              <div>
+                <i class="flaticon-calendar"></i>
+                <span>برنامه هفتگی</span>
+              </div>
+            </div>
+            <div className="spinner-loading-schedule">
+              <RingLoader size={150} />
+            </div>
+          </div>
+          <Footer />
+        </div>
+      );
     return (
       <div>
         <Header />
