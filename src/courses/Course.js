@@ -42,6 +42,7 @@ class Course extends Component {
       </tbody>
     );
   }
+
   renderType = (type) => {
     if (type === "Asli") return <span className="kind-class asli">اصلی</span>;
     else if (type === "Paaye")
@@ -50,13 +51,16 @@ class Course extends Component {
       return <span className="kind-class umumi">عمومی</span>;
     else return <span className="kind-class takhasosi">تخصصی</span>;
   };
+
   renderCapacityCSS = (signedUp, capacity) => {
     if (capacity > signedUp) return "empty-capacity";
   };
+
   renderIcon = (signedUp, capacity) => {
     if (capacity > signedUp) return "add";
     else return "clock-circular-outline";
   };
+
   addCourse = async () => {
     const course = this.props.course;
     const requestOptions = {
@@ -73,6 +77,7 @@ class Course extends Component {
     if (json.success) toast.success("درس با موفقيت اضافه شد.");
     else toast.error(json.message);
   };
+
   getId = () => {
     return JSON.parse(localStorage.getItem("id"));
   };

@@ -11,7 +11,12 @@ class SearchBox extends Component {
   render() {
     return (
       <div className="search borders">
-        <input className="borders" placeholder="نام درس" onChange={this.handleInputChange} defaultValue={this.getSearchFilter()}/>
+        <input
+          className="borders"
+          placeholder="نام درس"
+          onChange={this.handleInputChange}
+          defaultValue={this.getSearchFilter()}
+        />
         <button onClick={this.handleClick}>
           جستجو
           <i className="flaticon-loupe search-icon"></i>
@@ -19,15 +24,21 @@ class SearchBox extends Component {
       </div>
     );
   }
+
   handleInputChange = (event) => {
     this.setState({ searchFilter: event.target.value });
   };
+
   handleClick = () => {
-    localStorage.setItem("searchFilter", JSON.stringify(this.state.searchFilter));
+    localStorage.setItem(
+      "searchFilter",
+      JSON.stringify(this.state.searchFilter)
+    );
     setTimeout(() => {
-      toast.success("جستجو با موفقیت انجام شد.")
+      toast.success("جستجو با موفقیت انجام شد.");
     }, 1000);
   };
+
   getSearchFilter = () => {
     return JSON.parse(localStorage.getItem("searchFilter"));
   };

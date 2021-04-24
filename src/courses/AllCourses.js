@@ -12,16 +12,16 @@ class AllCourses extends Component {
   }
   render() {
     if (this.state.loading)
-    return (
-      <div className="all-courses borders">
-        <div className="label-courses borders">
-          <span>دروس ارائه شده</span>
+      return (
+        <div className="all-courses borders">
+          <div className="label-courses borders">
+            <span>دروس ارائه شده</span>
+          </div>
+          <div className="spinner-loading-courses">
+            <RingLoader size={150} />
+          </div>
         </div>
-        <div className="spinner-loading-courses">
-        <RingLoader size={150} />
-        </div>
-      </div>
-    );
+      );
     return (
       <div className="all-courses borders">
         <div className="label-courses borders">
@@ -144,11 +144,9 @@ class AllCourses extends Component {
     if (type == "all" && typeFilter == null) return "checked";
     return "";
   };
+
   handleClick = (event) => {
     localStorage.setItem("typeFilter", JSON.stringify(event.target.value));
-  };
-  getId = () => {
-    return JSON.parse(localStorage.getItem("id"));
   };
 }
 

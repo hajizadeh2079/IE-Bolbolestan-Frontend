@@ -14,7 +14,7 @@ class Report extends Component {
     if (this.state.loading)
       return (
         <div className="col-md-8">
-          <div className="all-report-cards spinner-loading">
+          <div className="all-report-cards spinner-loading-home">
             <RingLoader size={150} />
           </div>
         </div>

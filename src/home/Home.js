@@ -20,10 +20,6 @@ class Home extends Component {
       </div>
     );
   }
-
-  getId = () => {
-    return JSON.parse(localStorage.getItem("id"));
-  };
 }
 
 export default Home;

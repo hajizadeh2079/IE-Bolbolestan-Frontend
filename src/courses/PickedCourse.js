@@ -1,5 +1,5 @@
 import { React, Component } from "react";
-import {ToastContainer, toast} from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 
 class Course extends Component {
   constructor(props) {
@@ -26,6 +26,7 @@ class Course extends Component {
       </tbody>
     );
   }
+
   renderStatus = (status) => {
     if (status === "registered")
       return (
@@ -56,6 +57,7 @@ class Course extends Component {
     const response = await fetch(apiUrl, requestOptions);
     const json = await response.json();
   };
+
   getId = () => {
     return JSON.parse(localStorage.getItem("id"));
   };
