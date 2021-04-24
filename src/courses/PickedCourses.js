@@ -1,6 +1,7 @@
 import { React, Component } from "react";
 import PickedCourse from "./PickedCourse";
 import RingLoader from "react-spinners/RingLoader";
+import { ToastContainer, toast } from "react-toastify";
 
 class PickedCourses extends Component {
   constructor(props) {
@@ -10,10 +11,21 @@ class PickedCourses extends Component {
       nonFinalizedCourses: [],
       waitingCourses: [],
       sumOfUnits: 0,
-      loading: false,
+      loading: true,
     };
   }
   render() {
+    if (this.state.loading)
+      return (
+        <div className="picked-courses borders">
+          <div className="label-courses borders">
+            <span>دروس انتخاب شده</span>
+          </div>
+          <div className="spinner-loading-courses">
+            <RingLoader size={150} />
+          </div>
+        </div>
+      );
     return (
       <div className="picked-courses borders">
         <div className="label-courses borders">
@@ -82,6 +94,7 @@ class PickedCourses extends Component {
         nonFinalizedCourses: json.nonFinalizedCourses,
         waitingCourses: json.waitingCourses,
         sumOfUnits: json.sumOfUnits,
+        loading: false,
       });
     }, 2000);
   }
@@ -90,15 +103,18 @@ class PickedCourses extends Component {
     const apiUrl = `http://localhost:8080/plans/${this.getId()}`;
     const response = await fetch(apiUrl);
     const json = await response.json();
-    this.setState({
-      finalizedCourses: json.finalizedCourses,
-      nonFinalizedCourses: json.nonFinalizedCourses,
-      waitingCourses: json.waitingCourses,
-      sumOfUnits: json.sumOfUnits,
-    });
+    setTimeout(() => {
+      this.setState({
+        finalizedCourses: json.finalizedCourses,
+        nonFinalizedCourses: json.nonFinalizedCourses,
+        waitingCourses: json.waitingCourses,
+        sumOfUnits: json.sumOfUnits,
+      });
+    }, 1000);
   }
 
   resetPlan = async () => {
+    toast.success("بازگردانی برنامه با موفقيت انجام شد.");
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -119,6 +135,8 @@ class PickedCourses extends Component {
     const apiUrl = `http://localhost:8080/plans/submit/${this.getId()}`;
     const response = await fetch(apiUrl, requestOptions);
     const json = await response.json();
+    if (json.success) toast.success("ثبت نهایی دروس با موفقيت انجام شد.");
+    else toast.error(json.message);
   };
 
   getId = () => {

@@ -7,10 +7,21 @@ class AllCourses extends Component {
     super(props);
     this.state = {
       courses: [],
-      loading: false,
+      loading: true,
     };
   }
   render() {
+    if (this.state.loading)
+    return (
+      <div className="all-courses borders">
+        <div className="label-courses borders">
+          <span>دروس ارائه شده</span>
+        </div>
+        <div className="spinner-loading-courses">
+        <RingLoader size={150} />
+        </div>
+      </div>
+    );
     return (
       <div className="all-courses borders">
         <div className="label-courses borders">
@@ -120,10 +131,11 @@ class AllCourses extends Component {
     const apiUrl = `http://localhost:8080/courses?search=${searchFilter}&type=${typeFilter}`;
     const response = await fetch(apiUrl);
     const json = await response.json();
-    this.setState({
-      courses: json,
-      loading: false,
-    });
+    setTimeout(() => {
+      this.setState({
+        courses: json,
+      });
+    }, 1000);
   }
 
   handleChecked = (type) => {

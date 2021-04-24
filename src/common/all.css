@@ -100,9 +100,3 @@ a:hover {
 .special-buttons:focus {
   outline: none;
 }
-
-.spinner-loading {
-  display: flex;
-  justify-content: center;
-  padding-top: 30px;
-}

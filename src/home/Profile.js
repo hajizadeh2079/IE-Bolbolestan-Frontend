@@ -22,7 +22,7 @@ class Profile extends Component {
   render() {
     if (this.state.loading)
       return (
-        <div className="col-md-4 profile spinner-loading">
+        <div className="col-md-4 profile spinner-loading-home">
           <RingLoader size={150} />
         </div>
       );

@@ -1,4 +1,5 @@
 import { React, Component } from "react";
+import { ToastContainer, toast } from "react-toastify";
 
 class SearchBox extends Component {
   constructor(props) {
@@ -23,6 +24,9 @@ class SearchBox extends Component {
   };
   handleClick = () => {
     localStorage.setItem("searchFilter", JSON.stringify(this.state.searchFilter));
+    setTimeout(() => {
+      toast.success("جستجو با موفقیت انجام شد.")
+    }, 1000);
   };
   getSearchFilter = () => {
     return JSON.parse(localStorage.getItem("searchFilter"));

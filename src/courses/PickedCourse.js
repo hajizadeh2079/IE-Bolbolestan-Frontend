@@ -1,4 +1,5 @@
 import { React, Component } from "react";
+import {ToastContainer, toast} from "react-toastify";
 
 class Course extends Component {
   constructor(props) {
@@ -27,17 +28,21 @@ class Course extends Component {
   }
   renderStatus = (status) => {
     if (status === "registered")
-      return <span className="register-status registered borders">ثبت شده</span>;
+      return (
+        <span className="register-status registered borders">ثبت شده</span>
+      );
     else if (status === "not-registered")
       return (
         <span className="register-status not-registered borders">
           ثبت نهایی نشده
         </span>
       );
-    else return <span className="register-status waiting borders">در انتظار</span>;
+    else
+      return <span className="register-status waiting borders">در انتظار</span>;
   };
 
   removeCourse = async () => {
+    toast.success("حذف با موفقيت انجام شد.");
     const course = this.props.course;
     const requestOptions = {
       method: "DELETE",
