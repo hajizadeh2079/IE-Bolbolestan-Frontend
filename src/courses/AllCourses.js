@@ -5,13 +5,9 @@ import RingLoader from "react-spinners/RingLoader";
 class AllCourses extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      courses: [],
-      loading: true,
-    };
   }
   render() {
-    if (this.state.loading)
+    if (this.props.loading)
       return (
         <div className="all-courses borders">
           <div className="label-courses borders">
@@ -98,44 +94,18 @@ class AllCourses extends Component {
                 <th>توضیحات</th>
               </tr>
             </tbody>
-            {this.state.courses.map((course, index) => (
-              <Course key={index} course={course} />
+            {this.props.courses.map((course, index) => (
+              <Course
+                key={index}
+                course={course}
+                allCoursesTrigger={this.props.allCoursesTrigger}
+                pickedCoursesTrigger={this.props.pickedCoursesTrigger}
+              />
             ))}
           </table>
         </div>
       </div>
     );
-  }
-
-  async componentDidMount() {
-    let searchFilter = JSON.parse(localStorage.getItem("searchFilter"));
-    let typeFilter = JSON.parse(localStorage.getItem("typeFilter"));
-    if (searchFilter == null) searchFilter = "";
-    if (typeFilter == null) typeFilter = "all";
-    const apiUrl = `http://localhost:8080/courses?search=${searchFilter}&type=${typeFilter}`;
-    const response = await fetch(apiUrl);
-    const json = await response.json();
-    setTimeout(() => {
-      this.setState({
-        courses: json,
-        loading: false,
-      });
-    }, 2000);
-  }
-
-  async componentWillUpdate() {
-    let searchFilter = JSON.parse(localStorage.getItem("searchFilter"));
-    let typeFilter = JSON.parse(localStorage.getItem("typeFilter"));
-    if (searchFilter == null) searchFilter = "";
-    if (typeFilter == null) typeFilter = "all";
-    const apiUrl = `http://localhost:8080/courses?search=${searchFilter}&type=${typeFilter}`;
-    const response = await fetch(apiUrl);
-    const json = await response.json();
-    setTimeout(() => {
-      this.setState({
-        courses: json,
-      });
-    }, 1000);
   }
 
   handleChecked = (type) => {
@@ -147,6 +117,7 @@ class AllCourses extends Component {
 
   handleClick = (event) => {
     localStorage.setItem("typeFilter", JSON.stringify(event.target.value));
+    this.props.allCoursesTrigger();
   };
 }
 

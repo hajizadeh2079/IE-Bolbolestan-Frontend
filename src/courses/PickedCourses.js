@@ -6,16 +6,9 @@ import { ToastContainer, toast } from "react-toastify";
 class PickedCourses extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      finalizedCourses: [],
-      nonFinalizedCourses: [],
-      waitingCourses: [],
-      sumOfUnits: 0,
-      loading: true,
-    };
   }
   render() {
-    if (this.state.loading)
+    if (this.props.loading)
       return (
         <div className="picked-courses borders">
           <div className="label-courses borders">
@@ -43,35 +36,38 @@ class PickedCourses extends Component {
                 <th>واحد</th>
               </tr>
             </tbody>
-            {this.state.finalizedCourses.map((course) => (
+            {this.props.finalizedCourses.map((course) => (
               <PickedCourse
                 key={course.code}
                 course={course}
                 status="registered"
-                trigger={this.trigger}
+                allCoursesTrigger={this.props.allCoursesTrigger}
+                pickedCoursesTrigger={this.props.pickedCoursesTrigger}
               />
             ))}
-            {this.state.nonFinalizedCourses.map((course) => (
+            {this.props.nonFinalizedCourses.map((course) => (
               <PickedCourse
                 key={course.code}
                 course={course}
                 status="not-registered"
-                trigger={this.trigger}
+                allCoursesTrigger={this.props.allCoursesTrigger}
+                pickedCoursesTrigger={this.props.pickedCoursesTrigger}
               />
             ))}
-            {this.state.waitingCourses.map((course) => (
+            {this.props.waitingCourses.map((course) => (
               <PickedCourse
                 key={course.code}
                 course={course}
                 status="waiting"
-                trigger={this.trigger}
+                allCoursesTrigger={this.props.allCoursesTrigger}
+                pickedCoursesTrigger={this.props.pickedCoursesTrigger}
               />
             ))}
           </table>
         </div>
         <div className="picked-courses-status">
           <div className="num-of-units">
-            <span>تعداد واحد ثبت شده: {this.state.sumOfUnits}</span>
+            <span>تعداد واحد ثبت شده: {this.props.sumOfUnits}</span>
           </div>
           <div className="finalized-reset">
             <button className="special-buttons" onClick={this.resetPlan}>
@@ -84,35 +80,6 @@ class PickedCourses extends Component {
     );
   }
 
-  async componentDidMount() {
-    const apiUrl = `http://localhost:8080/plans/${this.getId()}`;
-    const response = await fetch(apiUrl);
-    const json = await response.json();
-    setTimeout(() => {
-      this.setState({
-        finalizedCourses: json.finalizedCourses,
-        nonFinalizedCourses: json.nonFinalizedCourses,
-        waitingCourses: json.waitingCourses,
-        sumOfUnits: json.sumOfUnits,
-        loading: false,
-      });
-    }, 2000);
-  }
-
-  async componentWillUpdate() {
-    const apiUrl = `http://localhost:8080/plans/${this.getId()}`;
-    const response = await fetch(apiUrl);
-    const json = await response.json();
-    setTimeout(() => {
-      this.setState({
-        finalizedCourses: json.finalizedCourses,
-        nonFinalizedCourses: json.nonFinalizedCourses,
-        waitingCourses: json.waitingCourses,
-        sumOfUnits: json.sumOfUnits,
-      });
-    }, 1000);
-  }
-
   resetPlan = async () => {
     toast.success("بازگردانی برنامه با موفقيت انجام شد.");
     const requestOptions = {
@@ -120,8 +87,8 @@ class PickedCourses extends Component {
       headers: { "Content-Type": "application/json" },
     };
     const apiUrl = `http://localhost:8080/plans/reset/${this.getId()}`;
-    const response = await fetch(apiUrl, requestOptions);
-    const json = await response.json();
+    await fetch(apiUrl, requestOptions);
+    this.props.pickedCoursesTrigger();
   };
 
   submitPlan = async () => {
@@ -135,8 +102,11 @@ class PickedCourses extends Component {
     const apiUrl = `http://localhost:8080/plans/submit/${this.getId()}`;
     const response = await fetch(apiUrl, requestOptions);
     const json = await response.json();
-    if (json.success) toast.success("ثبت نهایی دروس با موفقيت انجام شد.");
-    else toast.error(json.message);
+    if (json.success) {
+      toast.success("ثبت نهایی دروس با موفقيت انجام شد.");
+      this.props.pickedCoursesTrigger();
+      this.props.allCoursesTrigger();
+    } else toast.error(json.message);
   };
 
   getId = () => {

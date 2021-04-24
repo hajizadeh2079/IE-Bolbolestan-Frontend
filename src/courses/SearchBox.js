@@ -34,9 +34,8 @@ class SearchBox extends Component {
       "searchFilter",
       JSON.stringify(this.state.searchFilter)
     );
-    setTimeout(() => {
-      toast.success("جستجو با موفقیت انجام شد.");
-    }, 1000);
+    this.props.allCoursesTrigger()
+    toast.success("جستجو با موفقیت انجام شد.");
   };
 
   getSearchFilter = () => {

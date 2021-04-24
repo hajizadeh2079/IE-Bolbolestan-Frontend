@@ -74,7 +74,10 @@ class Course extends Component {
     const apiUrl = `http://localhost:8080/plans/${this.getId()}`;
     const response = await fetch(apiUrl, requestOptions);
     const json = await response.json();
-    if (json.success) toast.success("درس با موفقيت اضافه شد.");
+    if (json.success) {
+      toast.success("درس با موفقيت اضافه شد.");
+      this.props.pickedCoursesTrigger()
+    }
     else toast.error(json.message);
   };
 
