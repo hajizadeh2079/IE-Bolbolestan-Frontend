@@ -51,6 +51,7 @@ body {
 .exit {
   color: #ff595e;
   display: flex;
+  cursor: pointer;
 }
 
 a:hover {
