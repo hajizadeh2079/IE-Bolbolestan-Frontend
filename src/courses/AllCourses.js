@@ -91,18 +91,21 @@ class AllCourses extends Component {
                 <th>نام درس</th>
                 <th>استاد</th>
                 <th>واحد</th>
-                <th>توضیحات</th>
               </tr>
             </tbody>
             {this.props.courses.map((course, index) => (
               <Course
                 key={index}
                 course={course}
+                index={index}
                 allCoursesTrigger={this.props.allCoursesTrigger}
                 pickedCoursesTrigger={this.props.pickedCoursesTrigger}
               />
             ))}
           </table>
+          <span className="all-courses-details">
+            <strong>توضیحات</strong>
+          </span>
         </div>
       </div>
     );

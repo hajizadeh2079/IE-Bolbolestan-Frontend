@@ -195,13 +195,23 @@
 .all-courses-table {
   max-height: 720px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   overflow-y: scroll;
   scrollbar-width: none;
 }
 
+.all-courses-details {
+  margin: 0 auto;
+  color: #1a4c89;
+  font-size: 20px;
+  padding: 30px 0;
+  border-bottom: 2px solid #0087e0;
+  width: 15%;
+  height: 92px;
+}
+
 .all-courses-table table {
-  width: 100%;
+  width: 85%;
   border-top-width: 0;
 }
 
@@ -219,9 +229,14 @@
   padding: 5px 0;
 }
 
-.all-courses-table table td:last-child {
+.all-courses-table tbody:hover {
+  border: 2px solid #0087e0;
+}
+
+.all-courses-table tbody:first-child:hover {
   border: none;
 }
+
 
 .all-courses-icons {
   display: flex;
