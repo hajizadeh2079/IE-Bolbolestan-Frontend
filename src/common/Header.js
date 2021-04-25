@@ -6,7 +6,7 @@ class Header extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      delTask: false,
+      logoutShow: false,
     };
   }
   render() {
@@ -26,31 +26,31 @@ class Header extends Component {
           </li>
           <li className="nav-item col-md-6"></li>
           <li className="nav-item col-md-2">
-            <a className="exit" onClick={this.handleConfirmationBox}>
+            <a className="exit" onClick={this.showConfirmationBox}>
               <span>خروج</span>
               <i className="flaticon-log-out"></i>
             </a>
           </li>
           <li>
-            <Logout handleConfirmationBox={this.handleConfirmationBox} />
+            <Logout
+              hideConfirmationBox={this.hideConfirmationBox}
+              show={this.state.logoutShow}
+            />
           </li>
         </ul>
       </div>
     );
   }
 
-  handleConfirmationBox = () => {
-    if (!this.state.delTask) {
-      document.querySelector(".container-logout").style.display = "flex";
-      document.querySelector("*").style.filter = "brightness(50%)";
-      document.querySelector("body").style.background = "rgba(0,0,0,0.5)";
-    } else {
-      document.querySelector(".container-logout").style.display = "none";
-      document.querySelector("*").style.filter = "none";
-      document.querySelector("body").style.background = "none";
-    }
+  hideConfirmationBox = () => {
     this.setState({
-      delTask: !this.state.delTask,
+      logoutShow: false,
+    });
+  };
+
+  showConfirmationBox = () => {
+    this.setState({
+      logoutShow: true,
     });
   };
 }

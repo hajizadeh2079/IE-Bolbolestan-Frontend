@@ -1,6 +1,6 @@
 import { React, Component } from "react";
 import { ToastContainer, toast } from "react-toastify";
-import Tooltip from "react-bootstrap/Tooltip";
+import Popover from "react-bootstrap/Popover";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 
 class Course extends Component {
@@ -15,7 +15,9 @@ class Course extends Component {
           id={this.props.index}
           placement="left"
           overlay={
-            <Tooltip id={`tooltip-left`}>{this.renderTooltip()}</Tooltip>
+            <Popover id="popover-basic">
+              <Popover.Content>{this.renderTooltip()}</Popover.Content>
+            </Popover>
           }
         >
           <tr>
@@ -130,10 +132,10 @@ class Course extends Component {
       ":" +
       (examStart.getMinutes() == 0 ? "00" : examStart.getMinutes());
     return (
-      <div style={{ color: "#ffffff" }}>
+      <div style={{width: "12vw"}}>
         <p>{time}</p>
         <p>{day}</p>
-        <hr style={{ backgroundColor: "#ffffff", height: "1px" }} />
+        <hr style={{ backgroundColor: "#000000", height: "1px" }} />
         {preq.length > 0 && (
           <div>
             <p>
