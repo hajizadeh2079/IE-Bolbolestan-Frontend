@@ -10,7 +10,7 @@ class Home extends Component {
   render() {
     return (
       <div>
-        <Header />
+        <Header page1="انتخاب واحد" page1URL = "/courses" page2="برنامه هفتگی" page2URL="/schedule"/>
         <Cover />
         <div className="my-container">
           <Profile />

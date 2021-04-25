@@ -19,10 +19,10 @@ class Header extends Component {
             </a>
           </li>
           <li className="nav-item col-md-1">
-            <a href="/">خانه</a>
+            <a href={this.props.page1URL}>{this.props.page1}</a>
           </li>
           <li className="nav-item col-md-2">
-            <a href="/schedule">برنامه هفتگی</a>
+            <a href={this.props.page2URL}>{this.props.page2}</a>
           </li>
           <li className="nav-item col-md-6"></li>
           <li className="nav-item col-md-2">
@@ -32,9 +32,7 @@ class Header extends Component {
             </a>
           </li>
           <li>
-            <Logout
-              handleConfirmationBox={this.handleConfirmationBox}
-            />
+            <Logout handleConfirmationBox={this.handleConfirmationBox} />
           </li>
         </ul>
       </div>

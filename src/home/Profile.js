@@ -87,7 +87,7 @@ class Profile extends Component {
         tpu: json.tpu,
         loading: false,
       });
-    }, 5000);
+    }, 2000);
   }
 
   getId = () => {

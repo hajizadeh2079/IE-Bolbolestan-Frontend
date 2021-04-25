@@ -19,7 +19,7 @@ class Schedule extends Component {
     if (this.state.loading)
       return (
         <div>
-          <Header />
+        <Header page1="خانه" page1URL = "/" page2="انتخاب واحد" page2URL="/courses"/>
           <div class="schedule-container">
             <div class="schedule-header">
               <div>
@@ -36,7 +36,7 @@ class Schedule extends Component {
       );
     return (
       <div>
-        <Header />
+        <Header page1="خانه" page1URL = "/" page2="انتخاب واحد" page2URL="/courses"/>
         <div class="schedule-container">
           <div class="schedule-header">
             <div>
