@@ -1,0 +1,71 @@
+.container-cover {
+  background: url("../common/photos/cover\ photo.jpg") no-repeat center center
+    fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.signup-container {
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.signup-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #ffffff;
+  border-radius: 20px;
+  height: 550px;
+  width: 35%;
+  padding-bottom: 20px;
+  border-width: 0;
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 65%;
+}
+
+.signup-form-input {
+  padding: 10px 7px;
+  background-color: rgba(157, 157, 157, 0.1);
+  border-radius: 25px;
+  width: 90%;
+  border-width: 1px;
+  border-color: rgb(157, 157, 157);
+}
+
+.signup-button {
+  padding: 10px 7px;
+  font-weight: 900;
+  font-size: 22px;
+  background-color: #0087e0;
+  color: #ffffff;
+  border-radius: 25px;
+  width: 90%;
+  cursor: pointer;
+}
+
+.signup-form-logo {
+  margin: 0 auto;
+  width: auto;
+  height: 30%;
+}
+
+.has-account {
+  font-size: 18px;
+}
+
+.has-account a {
+  text-decoration: none;
+}
+
+.signup-form input:focus {
+  outline: none;
+}
