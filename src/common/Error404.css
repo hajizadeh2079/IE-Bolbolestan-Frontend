@@ -1,0 +1,32 @@
+.error-container-cover {
+  background: url("../common/photos/cover\ photo.jpg") no-repeat center center
+    fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.error-container {
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.error-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #ffffff;
+  border-radius: 20px;
+  height: 300px;
+  width: 60%;
+  padding-bottom: 20px;
+  border-width: 0;
+}
+
+.error-form-logo {
+  margin: 0 auto;
+  width: auto;
+  height: 50%;
+}
