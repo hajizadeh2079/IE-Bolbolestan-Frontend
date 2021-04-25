@@ -4,9 +4,6 @@ import Popover from "react-bootstrap/Popover";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 
 class Course extends Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     const course = this.props.course;
     return (
@@ -132,7 +129,7 @@ class Course extends Component {
       ":" +
       (examStart.getMinutes() == 0 ? "00" : examStart.getMinutes());
     return (
-      <div style={{width: "12vw"}}>
+      <div style={{ width: "12vw" }}>
         <p>{time}</p>
         <p>{day}</p>
         <hr style={{ backgroundColor: "#000000", height: "1px" }} />

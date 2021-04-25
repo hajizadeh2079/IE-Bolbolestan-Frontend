@@ -3,9 +3,6 @@ import Course from "./Course";
 import RingLoader from "react-spinners/RingLoader";
 
 class AllCourses extends Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     if (this.props.loading)
       return (
@@ -29,10 +26,10 @@ class AllCourses extends Component {
             id="all"
             value="all"
             name="typeFilter"
-            checked={this.handleChecked("all")}
+            defaultChecked={this.handleChecked("all")}
             onClick={this.handleClick}
           />
-          <label className="borders" for="all">
+          <label className="borders" htmlFor="all">
             همه
           </label>
           <input
@@ -40,10 +37,10 @@ class AllCourses extends Component {
             id="Takhasosi"
             value="Takhasosi"
             name="typeFilter"
-            checked={this.handleChecked("Takhasosi")}
+            defaultChecked={this.handleChecked("Takhasosi")}
             onClick={this.handleClick}
           />
-          <label className="borders" for="Takhasosi">
+          <label className="borders" htmlFor="Takhasosi">
             اختصاصی
           </label>
           <input
@@ -51,10 +48,10 @@ class AllCourses extends Component {
             id="Asli"
             value="Asli"
             name="typeFilter"
-            checked={this.handleChecked("Asli")}
+            defaultChecked={this.handleChecked("Asli")}
             onClick={this.handleClick}
           />
-          <label className="borders" for="Asli">
+          <label className="borders" htmlFor="Asli">
             اصلی
           </label>
           <input
@@ -62,10 +59,10 @@ class AllCourses extends Component {
             id="Paaye"
             value="Paaye"
             name="typeFilter"
-            checked={this.handleChecked("Paaye")}
+            defaultChecked={this.handleChecked("Paaye")}
             onClick={this.handleClick}
           />
-          <label className="borders" for="Paaye">
+          <label className="borders" htmlFor="Paaye">
             پایه
           </label>
           <input
@@ -73,10 +70,10 @@ class AllCourses extends Component {
             id="Umumi"
             value="Umumi"
             name="typeFilter"
-            checked={this.handleChecked("Umumi")}
+            defaultChecked={this.handleChecked("Umumi")}
             onClick={this.handleClick}
           />
-          <label className="borders" for="Umumi">
+          <label className="borders" htmlFor="Umumi">
             عمومی
           </label>
         </div>

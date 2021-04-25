@@ -1,9 +1,6 @@
 import { React, Component } from "react";
 
 class Grade extends Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     const grade = this.props.grade;
     return (

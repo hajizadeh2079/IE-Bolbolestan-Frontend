@@ -2,9 +2,6 @@ import { React, Component } from "react";
 import Grade from "./Grade";
 
 class Card extends Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     return (
       <div className="report-card">

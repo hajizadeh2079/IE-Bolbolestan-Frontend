@@ -74,9 +74,7 @@ class Login extends Component {
     const json = await response.json();
     if (json.id) {
       this.props.setId(this.state.email);
-    }
-    else 
-      toast.error("شماره دانشجويی نامعتبر!")
+    } else toast.error("شماره دانشجويی نامعتبر!");
   };
 
   getId = () => {

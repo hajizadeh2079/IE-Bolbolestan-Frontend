@@ -1,7 +1,6 @@
 import "./Logout.css";
 import { useHistory } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
-import Button from "react-bootstrap/Button";
 
 const Logout = (props) => {
   let history = useHistory();
@@ -17,7 +16,6 @@ const Logout = (props) => {
       size="lg"
       show={props.show}
       onHide={props.hideConfirmationBox}
-      bsSize="lg"
     >
       <div className="container-logout">
         <div className="confirmation-text">

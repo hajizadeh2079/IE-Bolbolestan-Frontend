@@ -1,14 +1,10 @@
 import { React, Component } from "react";
 class CourseBlock extends Component {
-  constructor(props) {
-    super(props);
-    console.log(props);
-  }
   render() {
     const course = this.props.course;
     return (
       <div
-        class={`course-block ${this.renderCSS(course.type)}`}
+        className={`course-block ${this.renderCSS(course.type)}`}
         style={{ top: this.renderTop(), bottom: this.renderBottom() }}
       >
         <span>
@@ -16,8 +12,8 @@ class CourseBlock extends Component {
             " - " +
             this.renderTime(course.classTimeStart)}
         </span>
-        <span class="class-name">{course.name}</span>
-        <span class="class-type">{this.renderType(course.type)}</span>
+        <span className="class-name">{course.name}</span>
+        <span className="class-type">{this.renderType(course.type)}</span>
       </div>
     );
   }

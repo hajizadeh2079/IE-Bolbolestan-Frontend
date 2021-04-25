@@ -19,11 +19,16 @@ class Schedule extends Component {
     if (this.state.loading)
       return (
         <div>
-        <Header page1="خانه" page1URL = "/" page2="انتخاب واحد" page2URL="/courses"/>
-          <div class="schedule-container">
-            <div class="schedule-header">
+          <Header
+            page1="خانه"
+            page1URL="/"
+            page2="انتخاب واحد"
+            page2URL="/courses"
+          />
+          <div className="schedule-container">
+            <div className="schedule-header">
               <div>
-                <i class="flaticon-calendar"></i>
+                <i className="flaticon-calendar"></i>
                 <span>برنامه هفتگی</span>
               </div>
             </div>
@@ -36,11 +41,16 @@ class Schedule extends Component {
       );
     return (
       <div>
-        <Header page1="خانه" page1URL = "/" page2="انتخاب واحد" page2URL="/courses"/>
-        <div class="schedule-container">
-          <div class="schedule-header">
+        <Header
+          page1="خانه"
+          page1URL="/"
+          page2="انتخاب واحد"
+          page2URL="/courses"
+        />
+        <div className="schedule-container">
+          <div className="schedule-header">
             <div>
-              <i class="flaticon-calendar"></i>
+              <i className="flaticon-calendar"></i>
               <span>برنامه هفتگی</span>
             </div>
             <span>ترم {this.state.term}</span>

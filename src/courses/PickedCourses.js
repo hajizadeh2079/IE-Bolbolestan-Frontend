@@ -4,9 +4,6 @@ import RingLoader from "react-spinners/RingLoader";
 import { ToastContainer, toast } from "react-toastify";
 
 class PickedCourses extends Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     if (this.props.loading)
       return (

@@ -1,11 +1,7 @@
 import { React, Component } from "react";
-import ReactDOM from "react-dom";
 import CourseBlock from "./CourseBlock";
 
 class ScheduleRow extends Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     const days = [
       "Saturday",
@@ -31,7 +27,7 @@ class ScheduleRow extends Component {
     for (let i = 0; i < this.props.courses.length; i++)
       for (let j = 0; j < this.props.courses[i].classTimeDays.length; j++)
         if (day == this.props.courses[i].classTimeDays[j])
-            return <CourseBlock course={this.props.courses[i]} />
+          return <CourseBlock course={this.props.courses[i]} />;
   };
 }
 

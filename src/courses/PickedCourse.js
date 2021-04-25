@@ -2,9 +2,6 @@ import { React, Component } from "react";
 import { ToastContainer, toast } from "react-toastify";
 
 class Course extends Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     const course = this.props.course;
     return (
@@ -55,7 +52,7 @@ class Course extends Component {
     };
     const apiUrl = `http://localhost:8080/plans/${this.getId()}`;
     await fetch(apiUrl, requestOptions);
-    this.props.pickedCoursesTrigger()
+    this.props.pickedCoursesTrigger();
   };
 
   getId = () => {

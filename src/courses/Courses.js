@@ -24,7 +24,12 @@ class Courses extends Component {
   render() {
     return (
       <div>
-        <Header page1="خانه" page1URL = "/" page2="برنامه هفتگی" page2URL="/schedule"/>
+        <Header
+          page1="خانه"
+          page1URL="/"
+          page2="برنامه هفتگی"
+          page2URL="/schedule"
+        />
         <ToastContainer
           position="top-center"
           autoClose={3000}
