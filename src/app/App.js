@@ -17,7 +17,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: "",
+      token: "",
     };
   }
 
@@ -26,7 +26,7 @@ class App extends Component {
       <Router>
         <Switch>
           <Route path="/login" exact>
-            <Login setId={this.setId} />
+            <Login setToken={this.setToken} />
           </Route>
           <Route path="/signup" exact>
             <Signup />
@@ -42,9 +42,9 @@ class App extends Component {
     );
   }
 
-  setId = (id) => {
-    localStorage.setItem("id", JSON.stringify(id));
-    this.setState({ id: id });
+  setToken = (token) => {
+    localStorage.setItem("token", JSON.stringify(token));
+    this.setState({ token: token });
   };
 }
 

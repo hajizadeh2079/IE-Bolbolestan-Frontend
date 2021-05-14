@@ -15,8 +15,8 @@ class Login extends Component {
   }
 
   render() {
-    const id = this.getId();
-    if (id) return <Redirect to={{ pathname: "/" }} />;
+    const token = this.getToken();
+    if (token) return <Redirect to={{ pathname: "/" }} />;
     return (
       <div className="my-container login-container container-cover">
         <div className="card borders">
@@ -50,6 +50,7 @@ class Login extends Component {
               type="password"
               id="inputPassword"
               placeholder="رمز عبور"
+              required
             />
             <button className="borders login-button" type="submit">
               ورود
@@ -69,16 +70,26 @@ class Login extends Component {
 
   handleSubmit = async (event) => {
     event.preventDefault();
-    const apiUrl = `http://localhost:8080/students/${this.state.email}`;
-    const response = await fetch(apiUrl);
-    const json = await response.json();
-    if (json.id) {
-      this.props.setId(this.state.email);
-    } else toast.error("شماره دانشجويی نامعتبر!");
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        email: this.state.email,
+        password: this.state.password,
+      }),
+    };
+    const apiUrl = `http://localhost:8080/students/login`;
+    const response = await fetch(apiUrl, requestOptions);
+    if (response.status == 200) {
+      const json = await response.json();
+      this.props.setToken(json.token);
+    }
+    else
+      toast.error("ایمیل یا رمز عبور نادرست است!");
   };
 
-  getId = () => {
-    return JSON.parse(localStorage.getItem("id"));
+  getToken = () => {
+    return JSON.parse(localStorage.getItem("token"));
   };
 }
 

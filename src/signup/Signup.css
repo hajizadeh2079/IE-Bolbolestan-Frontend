@@ -19,7 +19,8 @@
   justify-content: space-between;
   background-color: #ffffff;
   border-radius: 20px;
-  height: 700px;
+  height: 99%;
+  max-height: 700px;
   width: 35%;
   padding-bottom: 20px;
   border-width: 0;
@@ -33,7 +34,7 @@
 }
 
 .signup-form-input {
-  padding: 8px 5px;
+  padding: 7px 4px;
   background-color: rgba(157, 157, 157, 0.1);
   border-radius: 25px;
   width: 90%;
@@ -42,7 +43,7 @@
 }
 
 .signup-button {
-  padding: 8px 5px;
+  padding: 7px 4px;
   font-weight: 900;
   font-size: 22px;
   background-color: #0087e0;

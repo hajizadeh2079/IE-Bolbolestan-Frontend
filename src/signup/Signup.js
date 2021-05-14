@@ -2,6 +2,7 @@ import { React, Component } from "react";
 import "./Signup.css";
 import logo from "../common/photos/logo.png";
 import { Redirect } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -23,8 +24,8 @@ class signup extends Component {
     };
   }
   render() {
-    const id = this.getId();
-    if (id) return <Redirect to={{ pathname: "/" }} />;
+    const token = this.getToken();
+    if (token) return <Redirect to={{ pathname: "/" }} />;
     return (
       <div className="my-container signup-container container-cover">
         <ToastContainer
@@ -154,11 +155,14 @@ class signup extends Component {
         img: this.state.img,
       }),
     };
-    const apiUrl = `http://localhost:8080/students`;
+    const apiUrl = `http://localhost:8080/students/signup`;
     const response = await fetch(apiUrl, requestOptions);
     const json = await response.json();
     if (json.success) {
-      //this.props.setId(this.state.email);
+      toast.success("ثبت نام با موفقیت انجام شد.")
+      setTimeout(() => {
+        this.props.history.push("/login");
+      }, 4000);
     } else toast.error("ایمیل یا شماره دانشجویی تکراری است!");
   };
 
@@ -166,9 +170,9 @@ class signup extends Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  getId = () => {
-    return JSON.parse(localStorage.getItem("id"));
+  getToken = () => {
+    return JSON.parse(localStorage.getItem("token"));
   };
 }
 
-export default signup;
+export default withRouter(signup);
