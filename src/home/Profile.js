@@ -1,5 +1,7 @@
 import { React, Component } from "react";
 import RingLoader from "react-spinners/RingLoader";
+import { ToastContainer, toast } from "react-toastify";
+import { withRouter } from "react-router-dom";
 
 class Profile extends Component {
   constructor(props) {
@@ -69,30 +71,39 @@ class Profile extends Component {
   }
 
   async componentDidMount() {
-    const apiUrl = `http://localhost:8080/profiles/${this.getId()}`;
-    const response = await fetch(apiUrl);
-    const json = await response.json();
-    setTimeout(() => {
-      this.setState({
-        stdId: json.stdId,
-        name: json.name,
-        secondName: json.secondName,
-        birthDate: json.birthDate,
-        field: json.field,
-        faculty: json.faculty,
-        level: json.level,
-        status: json.status,
-        img: json.img,
-        gpa: json.gpa,
-        tpu: json.tpu,
-        loading: false,
-      });
-    }, 2000);
+    const requestOptions = {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Token: this.getToken(),
+      },
+    };
+    const apiUrl = `http://localhost:8080/profiles`;
+    const response = await fetch(apiUrl, requestOptions);
+    if (response.status == 200) {
+      const json = await response.json();
+      setTimeout(() => {
+        this.setState({
+          stdId: json.stdId,
+          name: json.name,
+          secondName: json.secondName,
+          birthDate: json.birthDate,
+          field: json.field,
+          faculty: json.faculty,
+          level: json.level,
+          status: json.status,
+          img: json.img,
+          gpa: json.gpa,
+          tpu: json.tpu,
+          loading: false,
+        });
+      }, 2000);
+    }
   }
 
-  getId = () => {
-    return JSON.parse(localStorage.getItem("id"));
+  getToken = () => {
+    return JSON.parse(localStorage.getItem("token"));
   };
 }
 
-export default Profile;
+export default withRouter(Profile);

@@ -1,5 +1,7 @@
 import { React, Component } from "react";
 import RingLoader from "react-spinners/RingLoader";
+import { ToastContainer, toast } from "react-toastify";
+import { withRouter } from "react-router-dom";
 import Card from "./Card";
 
 class Report extends Component {
@@ -31,20 +33,35 @@ class Report extends Component {
   }
 
   async componentDidMount() {
-    const apiUrl = `http://localhost:8080/reports/${this.getId()}`;
-    const response = await fetch(apiUrl);
-    const json = await response.json();
-    setTimeout(() => {
-      this.setState({
-        cards: json,
-        loading: false,
-      });
-    }, 2000);
+    const requestOptions = {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Token: this.getToken(),
+      },
+    };
+    const apiUrl = `http://localhost:8080/reports`;
+    const response = await fetch(apiUrl, requestOptions);
+    if (response.status == 200) {
+      const json = await response.json();
+      setTimeout(() => {
+        this.setState({
+          cards: json,
+          loading: false,
+        });
+      }, 2000);
+    } else {
+      localStorage.clear();
+      toast.error("نیاز به ورود مجدد!");
+      setTimeout(() => {
+        this.props.history.push("/login");
+      }, 3000);
+    }
   }
 
-  getId = () => {
-    return JSON.parse(localStorage.getItem("id"));
+  getToken = () => {
+    return JSON.parse(localStorage.getItem("token"));
   };
 }
 
-export default Report;
+export default withRouter(Report);

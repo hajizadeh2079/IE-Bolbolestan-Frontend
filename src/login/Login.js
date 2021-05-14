@@ -83,9 +83,7 @@ class Login extends Component {
     if (response.status == 200) {
       const json = await response.json();
       this.props.setToken(json.token);
-    }
-    else
-      toast.error("ایمیل یا رمز عبور نادرست است!");
+    } else toast.error("ایمیل یا رمز عبور نادرست است!");
   };
 
   getToken = () => {

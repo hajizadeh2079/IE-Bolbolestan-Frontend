@@ -159,10 +159,10 @@ class signup extends Component {
     const response = await fetch(apiUrl, requestOptions);
     const json = await response.json();
     if (json.success) {
-      toast.success("ثبت نام با موفقیت انجام شد.")
+      toast.success("ثبت نام با موفقیت انجام شد.");
       setTimeout(() => {
         this.props.history.push("/login");
-      }, 4000);
+      }, 3000);
     } else toast.error("ایمیل یا شماره دانشجویی تکراری است!");
   };
 
