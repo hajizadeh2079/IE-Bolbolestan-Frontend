@@ -5,6 +5,7 @@ import SearchBox from "./SearchBox";
 import PickedCourses from "./PickedCourses";
 import Footer from "../common/Footer";
 import { ToastContainer, toast } from "react-toastify";
+import { withRouter } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import "./Courses.css";
 
@@ -68,61 +69,108 @@ class Courses extends Component {
   }
 
   async componentDidMount() {
+    const requestOptions = {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Token: this.getToken(),
+      },
+    };
     let searchFilter = JSON.parse(localStorage.getItem("searchFilter"));
     let typeFilter = JSON.parse(localStorage.getItem("typeFilter"));
     if (searchFilter == null) searchFilter = "";
     if (typeFilter == null) typeFilter = "all";
     const apiUrl = `http://localhost:8080/courses?search=${searchFilter}&type=${typeFilter}`;
-    const response = await fetch(apiUrl);
-    const json = await response.json();
-    setTimeout(() => {
-      this.setState({
-        allCourses: json,
-        allLoading: false,
-      });
-    }, 2000);
-    const apiUrl2 = `http://localhost:8080/plans/${this.getId()}`;
-    const response2 = await fetch(apiUrl2);
-    const json2 = await response2.json();
-    setTimeout(() => {
-      this.setState({
-        finalizedCourses: json2.finalizedCourses,
-        nonFinalizedCourses: json2.nonFinalizedCourses,
-        waitingCourses: json2.waitingCourses,
-        sumOfUnits: json2.sumOfUnits,
-        pickedLoading: false,
-      });
-    }, 2000);
+    const response = await fetch(apiUrl, requestOptions);
+    if (response.status == 200) {
+      const json = await response.json();
+      setTimeout(() => {
+        this.setState({
+          allCourses: json,
+          allLoading: false,
+        });
+      }, 2000);
+    } else {
+      localStorage.clear();
+      toast.error("نیاز به ورود مجدد!");
+      setTimeout(() => {
+        this.props.history.push("/login");
+      }, 3000);
+    }
+    const apiUrl2 = `http://localhost:8080/plans`;
+    const response2 = await fetch(apiUrl2, requestOptions);
+    if (response2.status == 200) {
+      const json2 = await response2.json();
+      setTimeout(() => {
+        this.setState({
+          finalizedCourses: json2.finalizedCourses,
+          nonFinalizedCourses: json2.nonFinalizedCourses,
+          waitingCourses: json2.waitingCourses,
+          sumOfUnits: json2.sumOfUnits,
+          pickedLoading: false,
+        });
+      }, 2000);
+    }
   }
 
   pickedCoursesTrigger = async () => {
-    const apiUrl = `http://localhost:8080/plans/${this.getId()}`;
-    const response = await fetch(apiUrl);
-    const json = await response.json();
-    this.setState({
-      finalizedCourses: json.finalizedCourses,
-      nonFinalizedCourses: json.nonFinalizedCourses,
-      waitingCourses: json.waitingCourses,
-      sumOfUnits: json.sumOfUnits,
-    });
+    const requestOptions = {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Token: this.getToken(),
+      },
+    };
+    const apiUrl = `http://localhost:8080/plans`;
+    const response = await fetch(apiUrl, requestOptions);
+    if (response.status == 200) {
+      const json = await response.json();
+      this.setState({
+        finalizedCourses: json.finalizedCourses,
+        nonFinalizedCourses: json.nonFinalizedCourses,
+        waitingCourses: json.waitingCourses,
+        sumOfUnits: json.sumOfUnits,
+      });
+    } else {
+      localStorage.clear();
+      toast.error("نیاز به ورود مجدد!");
+      setTimeout(() => {
+        this.props.history.push("/login");
+      }, 3000);
+    }
   };
 
   allCoursesTrigger = async () => {
+    const requestOptions = {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Token: this.getToken(),
+      },
+    };
     let searchFilter = JSON.parse(localStorage.getItem("searchFilter"));
     let typeFilter = JSON.parse(localStorage.getItem("typeFilter"));
     if (searchFilter == null) searchFilter = "";
     if (typeFilter == null) typeFilter = "all";
     const apiUrl = `http://localhost:8080/courses?search=${searchFilter}&type=${typeFilter}`;
-    const response = await fetch(apiUrl);
-    const json = await response.json();
-    this.setState({
-      allCourses: json,
-    });
+    const response = await fetch(apiUrl, requestOptions);
+    if (response.status == 200) {
+      const json = await response.json();
+      this.setState({
+        allCourses: json,
+      });
+    } else {
+      localStorage.clear();
+      toast.error("نیاز به ورود مجدد!");
+      setTimeout(() => {
+        this.props.history.push("/login");
+      }, 3000);
+    }
   };
 
-  getId = () => {
-    return JSON.parse(localStorage.getItem("id"));
+  getToken = () => {
+    return JSON.parse(localStorage.getItem("token"));
   };
 }
 
-export default Courses;
+export default withRouter(Courses);

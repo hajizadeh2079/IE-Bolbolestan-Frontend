@@ -46,7 +46,7 @@ class Profile extends Component {
           </li>
           <li>
             <span>معدل کل: </span>
-            {this.state.gpa}
+            {this.state.gpa != "NaN" && this.state.gpa}
           </li>
           <li>
             <span>واحد گذرانده: </span>

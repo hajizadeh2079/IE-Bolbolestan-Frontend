@@ -4,6 +4,8 @@ import ScheduleRow from "./ScheduleRow";
 import Footer from "../common/Footer";
 import RingLoader from "react-spinners/RingLoader";
 import "./Schedule.css";
+import { withRouter } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 
 class Schedule extends Component {
   constructor(props) {
@@ -24,6 +26,17 @@ class Schedule extends Component {
             page1URL="/"
             page2="انتخاب واحد"
             page2URL="/courses"
+          />
+          <ToastContainer
+            position="top-center"
+            autoClose={3000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={true}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
           />
           <div className="schedule-container">
             <div className="schedule-header">
@@ -82,33 +95,47 @@ class Schedule extends Component {
   }
 
   async componentDidMount() {
-    const apiUrl = `http://localhost:8080/plans/finalized/${this.getId()}`;
-    const response = await fetch(apiUrl);
-    const json = await response.json();
-    setTimeout(() => {
-      this.setState({
-        courses: json.lastFinalizedCourses,
-        term: json.term,
-        loading: false,
-      });
-    }, 2000);
+    const requestOptions = {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Token: this.getToken(),
+      },
+    };
+    const apiUrl = `http://localhost:8080/plans/finalized`;
+    const response = await fetch(apiUrl, requestOptions);
+    if (response.status == 200) {
+      const json = await response.json();
+      setTimeout(() => {
+        this.setState({
+          courses: json.lastFinalizedCourses,
+          term: json.term,
+          loading: false,
+        });
+      }, 2000);
+    } else {
+      localStorage.clear();
+      toast.error("نیاز به ورود مجدد!");
+      setTimeout(() => {
+        this.props.history.push("/login");
+      }, 3000);
+    }
   }
 
   renderCourses = (start) => {
     let courses = [];
     for (let i = 0; i < this.state.courses.length; i++) {
-      let [hours, minutes, seconds] = this.state.courses[
-        i
-      ].classTimeStart.split(":");
+      let [hours, minutes, seconds] =
+        this.state.courses[i].classTimeStart.split(":");
       hours = parseInt(hours, 10);
       if (hours == start) courses.push(this.state.courses[i]);
     }
     return courses;
   };
 
-  getId = () => {
-    return JSON.parse(localStorage.getItem("id"));
+  getToken = () => {
+    return JSON.parse(localStorage.getItem("token"));
   };
 }
 
-export default Schedule;
+export default withRouter(Schedule);

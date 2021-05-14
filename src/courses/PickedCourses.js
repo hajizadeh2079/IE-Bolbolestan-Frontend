@@ -2,6 +2,7 @@ import { React, Component } from "react";
 import PickedCourse from "./PickedCourse";
 import RingLoader from "react-spinners/RingLoader";
 import { ToastContainer, toast } from "react-toastify";
+import { withRouter } from "react-router-dom";
 
 class PickedCourses extends Component {
   render() {
@@ -78,12 +79,26 @@ class PickedCourses extends Component {
   }
 
   resetPlan = async () => {
-    toast.success("بازگردانی برنامه با موفقيت انجام شد.");
     const requestOptions = {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        Token: this.getToken(),
+      },
     };
-    const apiUrl = `http://localhost:8080/plans/reset/${this.getId()}`;
+    const apiUrl = `http://localhost:8080/plans/reset`;
+    const response = await fetch(apiUrl, requestOptions);
+    if (response.status == 200) {
+      toast.success("بازگردانی برنامه با موفقيت انجام شد.");
+      this.props.pickedCoursesTrigger();
+    } else {
+      localStorage.clear();
+      toast.error("نیاز به ورود مجدد!");
+      setTimeout(() => {
+        this.props.history.push("/login");
+      }, 3000);
+    }
+
     await fetch(apiUrl, requestOptions);
     this.props.pickedCoursesTrigger();
   };
@@ -91,24 +106,32 @@ class PickedCourses extends Component {
   submitPlan = async () => {
     const requestOptions = {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        id: this.getId(),
-      }),
+      headers: {
+        "Content-Type": "application/json",
+        Token: this.getToken(),
+      },
     };
-    const apiUrl = `http://localhost:8080/plans/submit/${this.getId()}`;
+    const apiUrl = `http://localhost:8080/plans/submit`;
     const response = await fetch(apiUrl, requestOptions);
-    const json = await response.json();
-    if (json.success) {
-      toast.success("ثبت نهایی دروس با موفقيت انجام شد.");
-      this.props.pickedCoursesTrigger();
-      this.props.allCoursesTrigger();
-    } else toast.error(json.message);
+    if (response.status == 200) {
+      const json = await response.json();
+      if (json.success) {
+        toast.success("ثبت نهایی دروس با موفقيت انجام شد.");
+        this.props.pickedCoursesTrigger();
+        this.props.allCoursesTrigger();
+      } else toast.error(json.message);
+    } else {
+      localStorage.clear();
+      toast.error("نیاز به ورود مجدد!");
+      setTimeout(() => {
+        this.props.history.push("/login");
+      }, 3000);
+    }
   };
 
-  getId = () => {
-    return JSON.parse(localStorage.getItem("id"));
+  getToken = () => {
+    return JSON.parse(localStorage.getItem("token"));
   };
 }
 
-export default PickedCourses;
+export default withRouter(PickedCourses);

@@ -2,6 +2,7 @@ import { React, Component } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import Popover from "react-bootstrap/Popover";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import { withRouter } from "react-router-dom";
 
 class Course extends Component {
   render() {
@@ -73,19 +74,30 @@ class Course extends Component {
     const course = this.props.course;
     const requestOptions = {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        Token: this.getToken(),
+      },
       body: JSON.stringify({
         code: course.code,
         classCode: course.classCode,
       }),
     };
-    const apiUrl = `http://localhost:8080/plans/${this.getId()}`;
+    const apiUrl = `http://localhost:8080/plans`;
     const response = await fetch(apiUrl, requestOptions);
-    const json = await response.json();
-    if (json.success) {
-      toast.success("درس با موفقيت اضافه شد.");
-      this.props.pickedCoursesTrigger();
-    } else toast.error(json.message);
+    if (response.status == 200) {
+      const json = await response.json();
+      if (json.success) {
+        toast.success("درس با موفقيت اضافه شد.");
+        this.props.pickedCoursesTrigger();
+      } else toast.error(json.message);
+    } else {
+      localStorage.clear();
+      toast.error("نیاز به ورود مجدد!");
+      setTimeout(() => {
+        this.props.history.push("/login");
+      }, 3000);
+    }
   };
 
   renderTooltip = () => {
@@ -149,8 +161,8 @@ class Course extends Component {
     );
   };
 
-  getId = () => {
-    return JSON.parse(localStorage.getItem("id"));
+  getToken = () => {
+    return JSON.parse(localStorage.getItem("token"));
   };
 }
 
