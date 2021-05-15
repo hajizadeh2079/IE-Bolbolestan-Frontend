@@ -13,7 +13,7 @@ import Schedule from "../schedule/Schedule";
 import Error404 from "../common/Error404";
 import Signup from "../signup/Signup";
 import ForgetPassword from "../password/ForgetPassword";
-//import ResetPassword from "../password/ResetPassword";
+import ResetPassword from "../password/ResetPassword";
 
 class App extends Component {
   constructor(props) {
@@ -37,7 +37,7 @@ class App extends Component {
             <ForgetPassword />
           </Route>
           <Route path="/password/reset">
-            <Signup />
+            <ResetPassword />
           </Route>
           <ProtectedRoute path="/" exact component={Home} />
           <ProtectedRoute path="/courses" exact component={Courses} />
