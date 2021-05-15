@@ -58,6 +58,10 @@ class Login extends Component {
             <span className="no-account">
               آیا حساب کاربری ندارید؟ <a href="/signup">عضویت</a>
             </span>
+            <span className="no-account">
+              آیا رمز عبور خود را فراموش کرده اید؟{" "}
+              <a href="/password/forget">بازیابی رمز عبور</a>
+            </span>
           </form>
         </div>
       </div>
