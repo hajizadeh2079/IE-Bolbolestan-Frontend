@@ -5,6 +5,7 @@ import { Redirect } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import validator from "validator";
 
 class resetPassword extends Component {
   constructor(props) {
@@ -53,8 +54,26 @@ class resetPassword extends Component {
     );
   }
 
+  checkInputFormat = () => {
+    const state = this.state;
+    if (
+      !validator.isStrongPassword(state.password, {
+        minLowercase: 0,
+        minUppercase: 0,
+        minNumbers: 0,
+        minSymbols: 0,
+      })
+    )
+      return "رمز عبور باید حداقل شامل 8 کاراکتر باشد!";
+  };
+
   handleSubmit = async (event) => {
     event.preventDefault();
+    const errorMessage = this.checkInputFormat();
+    if (errorMessage) {
+      toast.error(errorMessage);
+      return;
+    }
     const requestOptions = {
       method: "POST",
       headers: {

@@ -5,6 +5,7 @@ import { Redirect } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import validator from "validator";
 
 class signup extends Component {
   constructor(props) {
@@ -94,7 +95,7 @@ class signup extends Component {
               name="birthDate"
               type="text"
               id="inputBirthDate"
-              placeholder="تاریخ تولد"
+              placeholder="تاریخ تولد YYYY/MM/DD"
               required
             />
             <input
@@ -136,8 +137,41 @@ class signup extends Component {
     );
   }
 
+  checkInputFormat = () => {
+    const state = this.state;
+    if (!validator.isAlpha(validator.blacklist(state.name, " "), "fa-IR"))
+      return "فرمت نام نادرست است!";
+    if (!validator.isAlpha(validator.blacklist(state.secondName, " "), "fa-IR"))
+      return "فرمت نام خانوادگی نادرست است!";
+    if (!validator.isEmail(state.email)) return "فرمت ایمیل نادرست است!";
+    if (
+      !validator.isStrongPassword(state.password, {
+        minLowercase: 0,
+        minUppercase: 0,
+        minNumbers: 0,
+        minSymbols: 0,
+      })
+    )
+      return "رمز عبور باید حداقل شامل 8 کاراکتر باشد!";
+    if (!(validator.isNumeric(state.id) && state.id.length == 9))
+      return "فرمت شماره دانشجویی نادرست است!";
+    if (!validator.isDate(state.birthDate))
+      return "فرمت تاریخ تولد نادرست است!";
+    if (!validator.isAlpha(validator.blacklist(state.field, " "), "fa-IR"))
+      return "فرمت رشته نادرست است!";
+    if (!validator.isAlpha(validator.blacklist(state.faculty, " "), "fa-IR"))
+      return "فرمت دانشکده نادرست است!";
+    if (!validator.isAlpha(validator.blacklist(state.level, " "), "fa-IR"))
+      return "فرمت مقطع نادرست است!";
+  };
+
   handleSubmit = async (event) => {
     event.preventDefault();
+    const errorMessage = this.checkInputFormat();
+    if (errorMessage) {
+      toast.error(errorMessage);
+      return;
+    }
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
