@@ -40,7 +40,7 @@ class Report extends Component {
         Token: this.getToken(),
       },
     };
-    const apiUrl = `http://localhost:8080/reports`;
+    const apiUrl = `http://87.247.185.122:32643/reports`;
     const response = await fetch(apiUrl, requestOptions);
     if (response.status == 200) {
       const json = await response.json();

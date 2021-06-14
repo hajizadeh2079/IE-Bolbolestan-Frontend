@@ -78,7 +78,7 @@ class Profile extends Component {
         Token: this.getToken(),
       },
     };
-    const apiUrl = `http://localhost:8080/profiles`;
+    const apiUrl = `http://87.247.185.122:32643/profiles`;
     const response = await fetch(apiUrl, requestOptions);
     if (response.status == 200) {
       const json = await response.json();

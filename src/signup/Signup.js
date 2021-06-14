@@ -189,7 +189,7 @@ class signup extends Component {
         img: this.state.img,
       }),
     };
-    const apiUrl = `http://localhost:8080/students/signup`;
+    const apiUrl = `http://87.247.185.122:32643/students/signup`;
     const response = await fetch(apiUrl, requestOptions);
     const json = await response.json();
     if (json.success) {

@@ -62,7 +62,7 @@ class forgetPassword extends Component {
         email: this.state.email,
       }),
     };
-    const apiUrl = `http://localhost:8080/students/password/forget`;
+    const apiUrl = `http://87.247.185.122:32643/students/password/forget`;
     const response = await fetch(apiUrl, requestOptions);
     const json = await response.json();
     if (json.success) {

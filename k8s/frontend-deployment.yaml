@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ie-frontend-deployment
+  namespace: armin-ali-ns
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend
+  strategy:
+    rollingUpdate:
+      maxUnavailable: 1
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - image: quay.io/arminaf/ie_client:new
+        name: frontend
+        imagePullPolicy: Always
+        ports:
+          - containerPort: 80
+        resources:
+          limits:
+            cpu: "333m"
+            memory: "333Mi"
+          requests:
+            cpu: "333m"
+            memory: "333Mi"

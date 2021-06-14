@@ -84,7 +84,7 @@ class resetPassword extends Component {
         password: this.state.password,
       }),
     };
-    const apiUrl = `http://localhost:8080/students/password/reset`;
+    const apiUrl = `http://87.247.185.122:32643/students/password/reset`;
     const response = await fetch(apiUrl, requestOptions);
     if (response.status == 200) {
       toast.success("رمز عبور با موفقیت تغییر یافت.");

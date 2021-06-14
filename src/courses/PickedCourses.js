@@ -86,7 +86,7 @@ class PickedCourses extends Component {
         Token: this.getToken(),
       },
     };
-    const apiUrl = `http://localhost:8080/plans/reset`;
+    const apiUrl = `http://87.247.185.122:32643/plans/reset`;
     const response = await fetch(apiUrl, requestOptions);
     if (response.status == 200) {
       toast.success("بازگردانی برنامه با موفقيت انجام شد.");
@@ -111,7 +111,7 @@ class PickedCourses extends Component {
         Token: this.getToken(),
       },
     };
-    const apiUrl = `http://localhost:8080/plans/submit`;
+    const apiUrl = `http://87.247.185.122:32643/plans/submit`;
     const response = await fetch(apiUrl, requestOptions);
     if (response.status == 200) {
       const json = await response.json();

@@ -102,7 +102,7 @@ class Schedule extends Component {
         Token: this.getToken(),
       },
     };
-    const apiUrl = `http://localhost:8080/plans/finalized`;
+    const apiUrl = `http://87.247.185.122:32643/plans/finalized`;
     const response = await fetch(apiUrl, requestOptions);
     if (response.status == 200) {
       const json = await response.json();

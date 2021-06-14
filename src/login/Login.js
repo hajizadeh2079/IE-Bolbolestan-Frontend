@@ -82,7 +82,7 @@ class Login extends Component {
         password: this.state.password,
       }),
     };
-    const apiUrl = `http://localhost:8080/students/login`;
+    const apiUrl = `http://87.247.185.122:32643/students/login`;
     const response = await fetch(apiUrl, requestOptions);
     if (response.status == 200) {
       const json = await response.json();

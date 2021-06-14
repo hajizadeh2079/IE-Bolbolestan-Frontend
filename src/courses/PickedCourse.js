@@ -53,7 +53,7 @@ class Course extends Component {
         classCode: course.classCode,
       }),
     };
-    const apiUrl = `http://localhost:8080/plans`;
+    const apiUrl = `http://87.247.185.122:32643/plans`;
     const response = await fetch(apiUrl, requestOptions);
     if (response.status == 200) {
       toast.success("حذف با موفقيت انجام شد.");

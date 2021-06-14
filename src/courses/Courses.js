@@ -80,7 +80,7 @@ class Courses extends Component {
     let typeFilter = JSON.parse(localStorage.getItem("typeFilter"));
     if (searchFilter == null) searchFilter = "";
     if (typeFilter == null) typeFilter = "all";
-    const apiUrl = `http://localhost:8080/courses?search=${searchFilter}&type=${typeFilter}`;
+    const apiUrl = `http://87.247.185.122:32643/courses?search=${searchFilter}&type=${typeFilter}`;
     const response = await fetch(apiUrl, requestOptions);
     if (response.status == 200) {
       const json = await response.json();
@@ -97,7 +97,7 @@ class Courses extends Component {
         this.props.history.push("/login");
       }, 3000);
     }
-    const apiUrl2 = `http://localhost:8080/plans`;
+    const apiUrl2 = `http://87.247.185.122:32643/plans`;
     const response2 = await fetch(apiUrl2, requestOptions);
     if (response2.status == 200) {
       const json2 = await response2.json();
@@ -121,7 +121,7 @@ class Courses extends Component {
         Token: this.getToken(),
       },
     };
-    const apiUrl = `http://localhost:8080/plans`;
+    const apiUrl = `http://87.247.185.122:32643/plans`;
     const response = await fetch(apiUrl, requestOptions);
     if (response.status == 200) {
       const json = await response.json();
@@ -152,7 +152,7 @@ class Courses extends Component {
     let typeFilter = JSON.parse(localStorage.getItem("typeFilter"));
     if (searchFilter == null) searchFilter = "";
     if (typeFilter == null) typeFilter = "all";
-    const apiUrl = `http://localhost:8080/courses?search=${searchFilter}&type=${typeFilter}`;
+    const apiUrl = `http://87.247.185.122:32643/courses?search=${searchFilter}&type=${typeFilter}`;
     const response = await fetch(apiUrl, requestOptions);
     if (response.status == 200) {
       const json = await response.json();
